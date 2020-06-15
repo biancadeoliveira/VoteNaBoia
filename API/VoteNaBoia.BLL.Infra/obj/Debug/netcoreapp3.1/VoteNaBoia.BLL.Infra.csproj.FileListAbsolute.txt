@@ -1,0 +1,13 @@
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.deps.json
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.pdb
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.Entities.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.Helpers.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.Entities.pdb
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\bin\Debug\netcoreapp3.1\VoteNaBoia.Helpers.pdb
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.csprojAssemblyReference.cache
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.AssemblyInfoInputs.cache
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.AssemblyInfo.cs
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.csproj.CopyComplete
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.BLL.Infra\obj\Debug\netcoreapp3.1\VoteNaBoia.BLL.Infra.pdb

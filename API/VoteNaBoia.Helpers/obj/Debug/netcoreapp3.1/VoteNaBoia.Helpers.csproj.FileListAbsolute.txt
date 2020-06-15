@@ -1,0 +1,8 @@
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\bin\Debug\netcoreapp3.1\VoteNaBoia.Helpers.deps.json
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\bin\Debug\netcoreapp3.1\VoteNaBoia.Helpers.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\bin\Debug\netcoreapp3.1\VoteNaBoia.Helpers.pdb
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\obj\Debug\netcoreapp3.1\VoteNaBoia.Helpers.csprojAssemblyReference.cache
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\obj\Debug\netcoreapp3.1\VoteNaBoia.Helpers.AssemblyInfoInputs.cache
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\obj\Debug\netcoreapp3.1\VoteNaBoia.Helpers.AssemblyInfo.cs
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\obj\Debug\netcoreapp3.1\VoteNaBoia.Helpers.dll
+D:\PÓS-ENG-SOFTWARE\7º Módulo\VoteNaBoia\VoteNaBoia\VoteNaBoia.Helpers\obj\Debug\netcoreapp3.1\VoteNaBoia.Helpers.pdb

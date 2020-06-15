@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VoteNaBoia.BLL.Infra\VoteNaBoia.BLL.Infra.csproj" />
+    <ProjectReference Include="..\VoteNaBoia.DAL.Infra\VoteNaBoia.DAL.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
