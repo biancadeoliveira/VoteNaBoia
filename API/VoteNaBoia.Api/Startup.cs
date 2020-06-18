@@ -34,8 +34,10 @@ namespace VoteNaBoia.Api
             services.AddScoped<VoteNaBoiaDbContext>();
             //REPOSITÓRIO
             services.AddScoped<ICadRestauranteRepository, CadRestauranteRepository>();
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
             //BLL
             services.AddScoped<ICadRestauranteBLL, CadRestauranteBLL>();
+            services.AddScoped<IAlunoBLL, AlunoBLL>();
 
             services.AddControllers();
         }
