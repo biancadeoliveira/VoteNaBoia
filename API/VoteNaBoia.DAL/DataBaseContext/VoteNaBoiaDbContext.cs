@@ -33,5 +33,6 @@ namespace VoteNaBoia.DAL.DataBaseContext
         public DbSet<CadRestaurante> CadRestaurante { get; set; }
         public DbSet<Aluno> Aluno { get; set; }
         public DbSet<TurmaAluno> TurmaAluno { get; set; }
+        public DbSet<Periodo> Periodo { get; set; }
     }
 }
