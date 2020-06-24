@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
+using VoteNaBoia.Helpers;
+
+namespace VoteNaBoia.Entities
+{
+    [Table("Restaurantes")]
+    public class Restaurante
+    {
+        [Key]
+        [Column("ID_Restaurante")]
+        public int IDRestaurante { get; private set; }
+
+        [Required]
+       // [ForeignKey("ID_Turma")]
+        [Column("ID_Turma")]
+        public int IDTurma { get; private set; }
+
+     //   public Turma Turma { get; set; }
+
+        [Required]
+        [Column("NM_Restaurante", TypeName ="varchar(100)")]
+        public string NMNome { get; private set; }
+
+        [Required]
+        [Column("NM_Tipo",TypeName ="varchar(100)")]
+        public string NMTipo { get; private set; }
+
+        [Required]
+        [Column("Endereco",TypeName ="varchar(255)")]
+        public string Endereco { get; private set; }
+
+        [Column("NO_Telefone",TypeName ="varchar(12)")]
+        public string NOTelefone { get; private set; }
+
+        [Column("Link",TypeName ="varchar(255)")]
+        public string Link { get; private set; }
+
+        [Column("Email",TypeName ="varchar(255)")]
+        public string Email { get; private set; }
+
+        [Required]
+        [Column("SN_Ativo",TypeName ="char(1)")]
+        public char SNAtivo { get;  set; }
+
+     //   public FormaPagamento FormaPagamento { get; set; }
+
+        protected Restaurante() { }
+
+        public Restaurante(int id,string nome, string tipo,int idTurma, string endereco, string telefone, string link, string email, char ativo) 
+        {
+            //this.Validations(RestNome: nome, RestTipo: tipo, RestEndereco: endereco);
+
+            this.IDRestaurante = id;
+            this.NMNome = nome;
+            this.NMTipo = tipo;
+            this.IDTurma = idTurma;
+            this.Endereco = endereco;
+            this.NOTelefone = telefone;
+            this.Link = link;
+            this.Email = email;
+            this.SNAtivo = ativo;
+        }
+
+        private void Validations(string RestNome, string RestTipo, string RestEndereco) 
+        {
+            //if (string.IsNullOrWhiteSpace(RestNome)) throw new BusinessException(message: "Preencha os campos obrigatórios.");
+            //if (string.IsNullOrWhiteSpace(RestTipo)) throw new BusinessException(message: "Preencha os campos obrigatórios.");
+            //if (string.IsNullOrWhiteSpace(RestEndereco)) throw new BusinessException(message: "Preencha os campos obrigatórios.");
+        }
+    }
+}

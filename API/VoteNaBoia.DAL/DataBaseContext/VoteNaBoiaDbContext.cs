@@ -30,7 +30,12 @@ namespace VoteNaBoia.DAL.DataBaseContext
             return await base.SaveChangesAsync() > 0;
         }
 
-        public DbSet<CadRestaurante> CadRestaurante { get; set; }
+        public DbSet<Restaurante> Restaurante { get; set; }
+        public DbSet<Avaliacao> Avaliacao { get; set; }
+        public DbSet<FormaPagamento> FormaPagamento { get; set; }
+        public DbSet<PagamentoRestaurante> PagamentoRestaurante { get; set; }
+        public DbSet<Turma> Turma { get; set; }
+        public DbSet<VotoDiario> VotoDiario { get; set; }
         public DbSet<Aluno> Aluno { get; set; }
     }
 }
