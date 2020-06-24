@@ -35,9 +35,13 @@ namespace VoteNaBoia.Api
             //REPOSITÓRIO
             services.AddScoped<IRestauranteRepository, RestauranteRepository>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<ITurmaAlunoRepository, TurmaAlunoRepository>();
+            services.AddScoped<IPeriodoRepository, PeriodoRepository>();
             //BLL
             services.AddScoped<IRestauranteBLL, RestauranteBLL>();
             services.AddScoped<IAlunoBLL, AlunoBLL>();
+            services.AddScoped<ITurmaAlunoBLL, TurmaAlunoBLL>();
+            services.AddScoped<IPeriodoBLL, PeriodoBLL>();
 
             services.AddControllers();
         }
