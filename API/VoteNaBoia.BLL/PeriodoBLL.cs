@@ -43,7 +43,7 @@ namespace VoteNaBoia.BLL
 
             if (periodoAnterior != null)
             {
-                if (_periodoRepository.IsPeriodoAbertoAsync(IDTurma, periodoAnterior.IDPeriodo).Result)
+                if (_periodoRepository.IsPeriodoAbertoAsync(periodoAnterior.IDPeriodo).Result)
                 {
                     periodoAnterior.DHFim = DateTime.Now;
                     periodoAnterior.SNAtivo = 'N';
@@ -60,6 +60,11 @@ namespace VoteNaBoia.BLL
         public async Task<Periodo> GetUltimoPeriodoAsync(int IDTurma)
         {
             return await _periodoRepository.GetUltimoPeriodoAsync(IDTurma);
+        }
+
+        public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodo)
+        {
+            return await _periodoRepository.IsPeriodoAbertoAsync(IDPeriodo);
         }
     }
 }
