@@ -125,7 +125,7 @@ namespace VoteNaBoia.BLL
             return false;
         }
 
-        private async Task<PeriodoResultado> GetPeriodo(int IDPeriodoResultado, int IDRestaurante = 0, int IDPeriodo = 0)
+        public async Task<PeriodoResultado> GetPeriodo(int IDPeriodoResultado, int IDRestaurante = 0, int IDPeriodo = 0)
         {
             if (IDPeriodoResultado != 0)
             {
