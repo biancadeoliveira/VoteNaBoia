@@ -13,6 +13,5 @@ namespace VoteNaBoia.DAL.Infra
         Task<List<Periodo>> GetAllPeriodosTurmaAsync(int IDTurma);
         void AbrirPeriodo(Periodo periodo);
         void FecharPeriodo(Periodo periodo);
-        Task<bool> IsPeriodoAbertoAsync(int IDPeriodo);
     }
 }
