@@ -171,7 +171,7 @@ namespace VoteNaBoia.Api.Controllers
             }
         }
 
-        [Route("{idTurma}"), HttpGet]
+        [Route("turma/{idTurma}"), HttpGet]
         public async Task<IActionResult> GetAll(int idTurma)
         {
             var responseContent = new ResponseContent();
