@@ -53,18 +53,18 @@ namespace VoteNaBoia.DAL
         /// </summary>
         /// <param name="nome">NOME DO RESTAURANTE</param>
         /// <returns>List de Objetos Restaurante</returns>
-        public async Task<List<Restaurante>> GetRestauranteByNameAsync(string nome)
+        public async Task<List<Restaurante>> GetRestauranteByNameAsync(string nome, int idTurma)
         {
-            return await _dbContext.Restaurante.Where(x => x.NMNome.Contains(nome)).ToListAsync();
+            return await _dbContext.Restaurante.Where(x => x.NMNome.Contains(nome) && x.IDTurma.Equals(idTurma)).ToListAsync();
         }
 
         /// <summary>
         /// MÉTODO RESPONSÁVEL POR RETORNAR UMA LISTA COM OS DADOS DE TODOS OS RESTAURANTE
         /// </summary>
         /// <returns>List de Objetos Restaurante</returns>
-        public async Task<List<Restaurante>> GetAllRestauranteAsync()
+        public async Task<List<Restaurante>> GetAllRestauranteAsync(int idTurma)
         {
-            return await _dbContext.Restaurante.ToListAsync();
+            return await _dbContext.Restaurante.Where(x=> x.IDTurma.Equals(idTurma)).ToListAsync();
         }
 
         /// <summary>
@@ -79,6 +79,11 @@ namespace VoteNaBoia.DAL
                 _dbContext.Restaurante.Attach(restaurante);
 
             _dbContext.Restaurante.Update(restaurante);
+        }
+
+        public async Task<Restaurante> GetSeRestauranteJaCadastrado(string nome, string endereco, int idTurma)
+        {
+            return await _dbContext.Restaurante.Where(x=> x.NMNome.Contains(nome) && x.Endereco.Contains(endereco) && x.IDTurma.Equals(idTurma)).FirstOrDefaultAsync();
         }
     }
 }

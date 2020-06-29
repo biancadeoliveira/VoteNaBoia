@@ -24,10 +24,22 @@ namespace VoteNaBoia.DAL
             _dbContext?.Dispose();
         }
 
-        public async Task<List<VotoDiario>> GetResultadoVotoDiarioAsync(DateTime DHInclusao)
+        public async Task<int> GetResultadoVotoDiarioAsync(int IDTurmaAluno,DateTime DHInclusao)
         {
-            return null;
-            //return await _dbContext.VotoDiario.Count(x=> x.IDPeriodoResultado).Where(x=> x.DHInclusao>=DHInclusao).Grou();
+
+            var votos = _dbContext.VotoDiario
+            .Where(x => x.DHInclusao >= DHInclusao && x.IDTurmaAluno.Equals(IDTurmaAluno));
+            foreach(var i in votos.GroupBy(v=> v.IDPeriodoResultado).Select(group=> new { 
+                periodo = group.Key,
+                total = group.Count()
+            })
+            .OrderByDescending(x=> x.total))
+            {
+                return  i.periodo;
+            }
+            
+            return  1;
+            
         }
 
 

@@ -11,21 +11,21 @@ namespace VoteNaBoia.Entities
     {
         [Key]
         [Column("ID_Voto_Diario")]
-        public int IDVotoDiario { get; private set; }
+        public int IDVotoDiario { get;  set; }
 
         [Required]
         [ForeignKey("ID_Periodo_Resultado")]
         [Column("ID_Periodo_Resultado")]
-        public int IDPeriodoResultado { get; private set; }
+        public int IDPeriodoResultado { get;  set; }
 
         [Required]
         [ForeignKey("ID_Turma_Aluno")]
         [Column("ID_Turma_Aluno")]
-        public int IDTurmaAluno { get; private set; }
+        public int IDTurmaAluno { get;  set; }
 
         [Required]
         [Column("DH_Inclusao")]
-        public DateTime DHInclusao { get; private set; }
+        public DateTime DHInclusao { get;  set; }
 
         protected VotoDiario() { }
 
@@ -36,9 +36,6 @@ namespace VoteNaBoia.Entities
             this.IDTurmaAluno = idTurmaAluno;
             this.DHInclusao = dataHora;
         }
-
-
-
 
     }
 }

@@ -25,11 +25,18 @@ namespace VoteNaBoia.BLL
         /// <returns></returns>
         public async Task CreateRestauranteAsync(Restaurante restaurante)
         {
-            
-            // valida se a turma existe
-          //  if (_turmaRepository.GetTurmaByIDAsync(restaurante.IDTurma) != null) {
+           // var cRestaurante = await _restauranteRepository.GetSeRestauranteJaCadastrado(restaurante.NMNome, restaurante.Endereco, restaurante.IDTurma);
+            if (await isRestauranteJaCadastrado(restaurante.NMNome, restaurante.Endereco, restaurante.IDTurma))
+            {
+                var msg = "Restaurante já cadastrado!!";
+                throw new Exception(msg);
+            }
+            else
+            {
                 _restauranteRepository.CreateRestauranteAsync(restaurante);
                 await _restauranteRepository.UnitOfWork.Commit();
+                
+            }
             
         }
 
@@ -38,60 +45,32 @@ namespace VoteNaBoia.BLL
             _restauranteRepository?.Dispose();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR O CADASTRO DO RESTAURANTE
-        /// </summary>
-        /// <param name="idRestaurante">ID DO RESTAURANTE</param>
-        /// <returns>OBJETO RESTAURANTE</returns>
         public async Task<Restaurante> GetRestauranteByIdAsync(int idRestaurante)
         {
-            //VERIFICAR SE OS DADOS QUE SERÃO CONSTRUÍDOS ESTÃO OK
-            new Restaurante( 0,"","",0,"","","","",' ');
-
             return await _restauranteRepository.GetRestauranteByIDAsync(idRestaurante);
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR UMA LISTA DE RESTAURANTES
-        /// </summary>
-        /// <param name="nome">NOME DO RESTAURANTE</param>
-        /// <returns>LISTA DE RESTAURANTES</returns>
-        public async Task<List<Restaurante>> GetRestauranteByNameAsync(string nome)
+        public async Task<List<Restaurante>> GetRestauranteByNameAsync(string nome, int idTurma)
         {
             new List<Restaurante>();
 
-            return await _restauranteRepository.GetRestauranteByNameAsync(nome);
+            return await _restauranteRepository.GetRestauranteByNameAsync(nome, idTurma);
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR UMA LISTA DE RESTAURANTES
-        /// </summary>
-        /// <param name="nome">NOME DO RESTAURANTE</param>
-        /// <returns>LISTA DE RESTAURANTES</returns>
-        public async Task<List<Restaurante>> GetAllRestauranteAsync()
+        public async Task<List<Restaurante>> GetAllRestauranteAsync(int idTurma)
         {
             new List<Restaurante>();
 
-            return await _restauranteRepository.GetAllRestauranteAsync();
+            return await _restauranteRepository.GetAllRestauranteAsync(idTurma);
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR ATUALIZAR O CADASTRO DO RESTAURANTE
-        /// </summary>
-        /// <param name="restaurante">OBJETO RESTAURANTE</param>
-        /// <returns></returns>
         public async Task UpdateRestauranteAsync(Restaurante restaurante)
         {
             _restauranteRepository.UpdateRestauranteAsync(restaurante);
             await _restauranteRepository.UnitOfWork.Commit();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR ATUALIZAR O STATUS DO RESTAURANTE
-        /// </summary>
-        /// <param name="idRestaurante">ID DO RESTAURANTE</param>
-        /// <param name="status">STATUS</param>
-        /// <returns>OK</returns>
+
         public async Task<string> UpdateStatusRestauranteAsync(int idRestaurante, char status)
         {
             if (!(status.Equals('S')) && !(status.Equals('N')))
@@ -106,6 +85,43 @@ namespace VoteNaBoia.BLL
 
             return "";
 
+        }
+
+        public async Task<bool> isRestauranteAtivo(int idRestaurante) {
+            var restaurante = await _restauranteRepository.GetRestauranteByIDAsync(idRestaurante);
+            if(restaurante.SNAtivo.Equals('S'))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public async Task<bool> isRestauranteJaCadastrado(string nome, string endereco, int idTurma)
+        {
+            var cRestaurante = await _restauranteRepository.GetSeRestauranteJaCadastrado(nome, endereco, idTurma);
+            if (cRestaurante != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> isRestauranteJaCadastradoById(int idRestaurante, int idTurma)
+        {
+            var cRestaurante = await _restauranteRepository.GetRestauranteByIDAsync(idRestaurante);
+            if (cRestaurante != null && cRestaurante.IDTurma.Equals(idTurma))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

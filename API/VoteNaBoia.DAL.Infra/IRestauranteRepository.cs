@@ -9,8 +9,9 @@ namespace VoteNaBoia.DAL.Infra
     public interface IRestauranteRepository:IRepository
     {
         Task<Restaurante> GetRestauranteByIDAsync(int idRestaurante);
-        Task<List<Restaurante>> GetRestauranteByNameAsync(string nome);
-        Task<List<Restaurante>> GetAllRestauranteAsync();
+        Task<List<Restaurante>> GetRestauranteByNameAsync(string nome, int idTurma);
+        Task<Restaurante> GetSeRestauranteJaCadastrado(string nome, string endereco, int idTurma);
+        Task<List<Restaurante>> GetAllRestauranteAsync(int idTurma);
         void CreateRestauranteAsync(Restaurante restaurante);
         void UpdateRestauranteAsync(Restaurante restaurante);
     }
