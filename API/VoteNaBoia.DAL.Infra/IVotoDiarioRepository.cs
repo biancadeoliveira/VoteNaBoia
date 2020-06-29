@@ -8,7 +8,8 @@ namespace VoteNaBoia.DAL.Infra
 {
     public interface IVotoDiarioRepository:IRepository
     {
-        Task<List<VotoDiario>> GetResultadoVotoDiarioAsync(DateTime DHInclusao);
+        // Task<List<VotoDiario>> GetResultadoVotoDiarioAsync(DateTime DHInclusao);
+        Task<int> GetResultadoVotoDiarioAsync(int IDTurmaAluno,DateTime DHInclusao);
         void InsertVotoDiarioAsync(VotoDiario votoDiario);
     }
 }

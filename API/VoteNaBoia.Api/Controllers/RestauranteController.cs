@@ -22,11 +22,7 @@ namespace VoteNaBoia.Api.Controllers
             _restauranteBLL = restauranteBLL;
         }
 
-        /// <summary>
-        /// PERSISTIR DADOS DO RESTAURANTE
-        /// </summary>
-        /// <param name="restaurante">OBJETO CADRESTAURANTE</param>
-        /// <returns>OBJETO RESPONSE</returns>
+
         [Route(""),HttpPost]
         public async Task<IActionResult> Post([FromBody] RestauranteDTO restaurante)
         {
@@ -50,11 +46,6 @@ namespace VoteNaBoia.Api.Controllers
             }
         }
 
-        /// <summary>
-        /// ATUALIZAR DADOS DO RESTAURANTE
-        /// </summary>
-        /// <param name="restaurante">OBJETO CADRESTAURANTE</param>
-        /// <returns>OBJETO RESPONSE</returns>
         [Route("{id}"),HttpPut]
         public async Task<IActionResult> Put([FromBody] RestauranteDTO restaurante, int id) 
         {
@@ -84,12 +75,7 @@ namespace VoteNaBoia.Api.Controllers
             }
         }
 
-        /// <summary>
-        /// ATUALIZAR STATUS DO RESTAURANTE
-        /// </summary>
-        /// <param name="idRestaurante">ID RESTAURANTE</param>
-        /// <param name="status">STATUS</param>
-        /// <returns>OK</returns>
+
         [Route("{id}/update/ativo"), HttpPut]
         public async Task<IActionResult> PutStatus([FromBody] RestauranteDTO restaurante, int id)
         {
@@ -156,14 +142,14 @@ namespace VoteNaBoia.Api.Controllers
             }
         }
 
-        [Route("nome/{nome}"), HttpGet]
-        public async Task<IActionResult> GetByName(string nome)
+        [Route("{idTurma}/{nome}"), HttpGet]
+        public async Task<IActionResult> GetByName(string nome, int idTurma)
         {
             var responseContent = new ResponseContent();
 
             try
             {
-                responseContent.Object = await _restauranteBLL.GetRestauranteByNameAsync(nome);
+                responseContent.Object = await _restauranteBLL.GetRestauranteByNameAsync(nome, idTurma);
 
                 if (responseContent.Object == null)
                 {
@@ -185,14 +171,14 @@ namespace VoteNaBoia.Api.Controllers
             }
         }
 
-        [Route(""), HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Route("{idTurma}"), HttpGet]
+        public async Task<IActionResult> GetAll(int idTurma)
         {
             var responseContent = new ResponseContent();
 
             try
             {
-                responseContent.Object = await _restauranteBLL.GetAllRestauranteAsync();
+                responseContent.Object = await _restauranteBLL.GetAllRestauranteAsync(idTurma);
 
                 if (responseContent.Object == null)
                 {
