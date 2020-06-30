@@ -41,5 +41,7 @@ namespace VoteNaBoia.DAL.DataBaseContext
         public DbSet<Periodo> Periodo { get; set; }
         public DbSet<PeriodoDiario> PeriodoDiario { get; set; }
         public DbSet<PeriodoResultado> PeriodoResultado { get; set; }
+        public DbSet<VotoSemanal> VotoSemanal { get; set; }
+        public DbSet<TurmaConfiguracao> TurmaConfiguracao { get; set; }
     }
 }

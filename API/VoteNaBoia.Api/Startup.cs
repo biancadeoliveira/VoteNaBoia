@@ -40,7 +40,10 @@ namespace VoteNaBoia.Api
             services.AddScoped<IPeriodoRepository, PeriodoRepository>();
             services.AddScoped<IPeriodoDiarioRepository, PeriodoDiarioRepository>();
             services.AddScoped<IPeriodoResultadoRepository, PeriodoResultadoRepository>();
+            services.AddScoped<IVotoSemanalRepository, VotoSemanalRepository>();
             services.AddScoped<IVotoDiarioRepository, VotoDiarioRepository>();
+            services.AddScoped<ITurmaConfiguracaoRepository, TurmaConfiguracaoRepository>();
+
             //BLL
             services.AddScoped<IRestauranteBLL, RestauranteBLL>();
             services.AddScoped<IAlunoBLL, AlunoBLL>();
@@ -49,7 +52,9 @@ namespace VoteNaBoia.Api
             services.AddScoped<IPeriodoBLL, PeriodoBLL>();
             services.AddScoped<IPeriodoDiarioBLL, PeriodoDiarioBLL>();
             services.AddScoped<IPeriodoResultadoBLL, PeriodoResultadoBLL>();
+            services.AddScoped<IVotoSemanalBLL, VotoSemanalBLL>();
             services.AddScoped<IVotoDiarioBLL, VotoDiarioBLL>();
+            services.AddScoped<ITurmaConfiguracaoBLL, TurmaConfiguracaoBLL>();
 
             services.AddControllers();
 

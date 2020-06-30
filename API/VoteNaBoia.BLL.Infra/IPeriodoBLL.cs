@@ -10,6 +10,7 @@ namespace VoteNaBoia.BLL.Infra
     {
         Task<Periodo> GetUltimoPeriodoAsync(int IDTurma);
         Task<List<Periodo>> GetAllPeriodosTurmaAsync(int IDTurma);
+        Task<Periodo> GetPeriodoAsync(int IDPeriodo);
         Task AbrirPeriodo(int IDTurma);
         Task FecharPeriodo(int IDTurma);
         Task<bool> IsPeriodoAbertoAsync(int IDPeriodo);
