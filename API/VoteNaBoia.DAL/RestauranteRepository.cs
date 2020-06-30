@@ -19,10 +19,7 @@ namespace VoteNaBoia.DAL
         }
         public IUnitOfWork UnitOfWork => _dbContext;
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR PERSISTIR O CADASTRO DO RESTAURANTE
-        /// </summary>
-        /// <param name="restaurante">OBJETO RESTAURANTE</param>
+ 
         public void CreateRestauranteAsync(Restaurante restaurante)
         {
 
@@ -34,43 +31,34 @@ namespace VoteNaBoia.DAL
             _dbContext?.Dispose();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR OS DADOS DO RESTAURANTE
-        /// </summary>
-        /// <param name="idRestaurante">ID DO RESTAURANTE</param>
-        /// <returns>OBJETO Restaurante</returns>
+
         public async Task<Restaurante> GetRestauranteByIDAsync(int idRestaurante)
         {
             return await _dbContext.Restaurante
-                //.Include(x=> x.Turma)
-              //  .Include(x=> x.FormaPagamento)
+                .Include(x=> x.PagamentoRestaurante).ThenInclude(p=> p.FormaPagamento)
+                .Include(x => x.Turma)
                 .Where(x => x.IDRestaurante.Equals(idRestaurante))
                 .FirstOrDefaultAsync();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR UMA LISTA COM OS DADOS DO(S) RESTAURANTE
-        /// </summary>
-        /// <param name="nome">NOME DO RESTAURANTE</param>
-        /// <returns>List de Objetos Restaurante</returns>
+
         public async Task<List<Restaurante>> GetRestauranteByNameAsync(string nome, int idTurma)
         {
-            return await _dbContext.Restaurante.Where(x => x.NMNome.Contains(nome) && x.IDTurma.Equals(idTurma)).ToListAsync();
+            return await _dbContext.Restaurante
+                .Include(x => x.PagamentoRestaurante).ThenInclude(p => p.FormaPagamento)
+                //.Include(x => x.Turma)
+                .Where(x => x.NMNome.Contains(nome) && x.IDTurma.Equals(idTurma)).ToListAsync();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR RETORNAR UMA LISTA COM OS DADOS DE TODOS OS RESTAURANTE
-        /// </summary>
-        /// <returns>List de Objetos Restaurante</returns>
         public async Task<List<Restaurante>> GetAllRestauranteAsync(int idTurma)
         {
-            return await _dbContext.Restaurante.Where(x=> x.IDTurma.Equals(idTurma)).ToListAsync();
+            return await _dbContext.Restaurante
+                .Include(x => x.PagamentoRestaurante).ThenInclude(p => p.FormaPagamento)
+               // .Include(x => x.Turma)
+                .Where(x=> x.IDTurma.Equals(idTurma)).ToListAsync();
         }
 
-        /// <summary>
-        /// MÉTODO RESPONSÁVEL POR ATUALIZAR O OBJETO RESTAURANTE
-        /// </summary>
-        /// <param name="restaurante">OBJETO RESTAURANTE</param>
+
         public void UpdateRestauranteAsync(Restaurante restaurante)
         {
             //VERIFICA SE O OBJETO ESTÁ ATACHADO

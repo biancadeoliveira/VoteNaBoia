@@ -12,48 +12,46 @@ namespace VoteNaBoia.Entities
     {
         [Key]
         [Column("ID_Restaurante")]
-        public int IDRestaurante { get; private set; }
+        public int IDRestaurante { get;  set; }
 
         [Required]
        // [ForeignKey("ID_Turma")]
         [Column("ID_Turma")]
-        public int IDTurma { get; private set; }
-
-     //   public Turma Turma { get; set; }
+        public int IDTurma { get;  set; }
 
         [Required]
         [Column("NM_Restaurante", TypeName ="varchar(100)")]
-        public string NMNome { get; private set; }
+        public string NMNome { get;  set; }
 
         [Required]
         [Column("NM_Tipo",TypeName ="varchar(100)")]
-        public string NMTipo { get; private set; }
+        public string NMTipo { get;  set; }
 
         [Required]
         [Column("Endereco",TypeName ="varchar(255)")]
-        public string Endereco { get; private set; }
+        public string Endereco { get;  set; }
 
         [Column("NO_Telefone",TypeName ="varchar(12)")]
-        public string NOTelefone { get; private set; }
+        public string NOTelefone { get;  set; }
 
         [Column("Link",TypeName ="varchar(255)")]
-        public string Link { get; private set; }
+        public string Link { get;  set; }
 
         [Column("Email",TypeName ="varchar(255)")]
-        public string Email { get; private set; }
+        public string Email { get;  set; }
 
         [Required]
         [Column("SN_Ativo",TypeName ="char(1)")]
         public char SNAtivo { get;  set; }
 
-     //   public FormaPagamento FormaPagamento { get; set; }
+        [ForeignKey("IDTurma")]
+        public Turma Turma { get; set; }
 
+        public  ICollection<PagamentoRestaurante> PagamentoRestaurante { get; set; }
         protected Restaurante() { }
 
         public Restaurante(int id,string nome, string tipo,int idTurma, string endereco, string telefone, string link, string email, char ativo) 
         {
-            //this.Validations(RestNome: nome, RestTipo: tipo, RestEndereco: endereco);
-
             this.IDRestaurante = id;
             this.NMNome = nome;
             this.NMTipo = tipo;

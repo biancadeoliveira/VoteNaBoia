@@ -25,6 +25,8 @@ namespace VoteNaBoia.Entities
         [Column("DT_Criacao")]
         public DateTime DTCriacao { get; private set; }
 
+     //   public  List<Restaurante> Restaurante { get; set; }
+
         protected Turma() { }
 
         public Turma(int id, string nome, int cod, DateTime dataCriacao)

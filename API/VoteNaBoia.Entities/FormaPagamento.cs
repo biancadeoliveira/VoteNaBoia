@@ -17,6 +17,8 @@ namespace VoteNaBoia.Entities
         [Column("NM_Forma_Pagamento",TypeName ="varchar(30)")]
         public string NMFormaPagamento { get; private set; }
 
+    //    public virtual List<PagamentoRestaurante> PagamentoRestaurante { get; set; }
+
         protected FormaPagamento() { }
 
         public FormaPagamento(int id, string descricao) 

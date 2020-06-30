@@ -6,6 +6,7 @@ namespace VoteNaBoia.Entities.DTO
 {
     public class RestauranteDTO
     {
+       
         public int IDRestaurante { get; set; }
         public int IDTurma { get; set; }
         public string NMNome { get; set; }
@@ -15,6 +16,10 @@ namespace VoteNaBoia.Entities.DTO
         public string Link { get; set; }
         public string Email { get; set; }
         public char SNAtivo { get; set; }
+
+        public Turma Turma { get; set; }
+
+        public ICollection<PagamentoRestaurante> PagamentoRestaurante { get; set; }
 
     }
 }

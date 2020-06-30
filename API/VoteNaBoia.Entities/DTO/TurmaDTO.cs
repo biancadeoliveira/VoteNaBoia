@@ -10,5 +10,6 @@ namespace VoteNaBoia.Entities.DTO
         public string NMTurma { get; set; }
         public int CDTurma { get; set; }
         public DateTime DTCriacao { get; set; }
+       // public  List<Restaurante> Restaurante { get; set; }
     }
 }

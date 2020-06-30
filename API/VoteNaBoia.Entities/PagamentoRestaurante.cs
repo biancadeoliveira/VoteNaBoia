@@ -11,19 +11,22 @@ namespace VoteNaBoia.Entities
     {
         [Key]
         [Column("ID_Pagamento_Restaurante")]
-        public int IDPagamentoRestaurante { get; private set; }
+        public int IDPagamentoRestaurante { get;  set; }
 
         [Required]
-        [ForeignKey("ID_Restaurante")]
         [Column("ID_Restaurante")]
-        public int IDRestaurante { get; private set; }
+        public int IDRestaurante { get;  set; }
+        [ForeignKey("IDRestaurante")]
+        public  Restaurante Restaurante { get; set; }
+
 
         [Required]
-        [ForeignKey("ID_Forma_Pagamento")]
         [Column("ID_Forma_Pagamento")]
-        public int IDFormaPagamento { get; private set; }
-
+        public int IDFormaPagamento { get;  set; }
+        [ForeignKey("IDFormaPagamento")]
         public FormaPagamento FormaPagamento { get; set; }
+       
+
 
         protected PagamentoRestaurante() { }
 

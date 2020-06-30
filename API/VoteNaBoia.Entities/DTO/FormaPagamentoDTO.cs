@@ -8,5 +8,7 @@ namespace VoteNaBoia.Entities.DTO
     {
         public int IDFormaPagamento { get; set; }
         public string NMFormaPagamento { get; set; }
+
+     //   public virtual List<PagamentoRestaurante> PagamentoRestaurante { get; set; }
     }
 }

@@ -9,5 +9,7 @@ namespace VoteNaBoia.Entities.DTO
         public int IDPagamentoRestaurante { get; set; }
         public int IDRestaurante { get; set; }
         public int IDFormaPagamento { get; set; }
+        public Restaurante Restaurante { get; set; }
+        public FormaPagamento FormaPagamento { get; set; }
     }
 }
