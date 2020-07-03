@@ -75,12 +75,14 @@ CREATE TABLE Pagamento_Restaurante(
 GO
 
 CREATE TABLE Periodos(
-	 ID_Periodo	Integer	NOT NULL Identity(1,1) PRIMARY KEY
-	,ID_Turma	Integer NOT NULL
-	,DH_Inicio	Datetime NOT NULL
-	,DH_Fim		Datetime NOT NULL
-	,SN_Ativo	Char(1)	NOT NULL DEFAULT('S')
+	 ID_Periodo		Integer	NOT NULL Identity(1,1) PRIMARY KEY
+	,ID_Turma		Integer NOT NULL
+	,DH_Inicio		Datetime NOT NULL
+	,DH_Fim			Datetime NOT NULL
+	,SN_Ativo		Char(1)	NOT NULL DEFAULT('S')
+	,SN_Processado	Char(1)	NOT NULL DEFAULT('S')
 	,CONSTRAINT chk_periodos_sn_ativo CHECK (SN_Ativo IN ('S', 'N'))
+	,CONSTRAINT chk_periodos_sn_processado CHECK (SN_Ativo IN ('S', 'N'))
 	,CONSTRAINT fk_periodos_turmas FOREIGN KEY (ID_Turma) REFERENCES Turmas(ID_Turma)
 )
 
@@ -108,15 +110,6 @@ CREATE TABLE Periodos_Resultados(
 	,CONSTRAINT fk_periodos_resultados_periodos FOREIGN KEY (ID_Periodo) REFERENCES Periodos(ID_Periodo)
 )
 
-CREATE TABLE Votos_Diarios(
-	 ID_Voto_Diario			Integer  NOT NULL Identity(1,1) PRIMARY KEY
-	,ID_Periodo_Resultado	Integer	 NOT NULL
-	,ID_Turma_Aluno			Integer	 NOT NULL
-	,DH_Inclusao			Datetime NOT NULL
-	,CONSTRAINT fk_votos_diarios_periodos_resultados FOREIGN KEY (ID_Periodo_Resultado) REFERENCES Periodos_Resultados(ID_Periodo_Resultado)
-	,CONSTRAINT fk_votos_diarios_turma_aluno FOREIGN KEY (ID_Turma_Aluno) REFERENCES Turma_Aluno(ID_Turma_Aluno)
-)
-
 CREATE TABLE Periodos_Diarios(
 	 ID_Periodo_Diario	Integer	NOT NULL Identity(1,1) PRIMARY KEY
 	,ID_Periodo			Integer NOT NULL
@@ -125,6 +118,17 @@ CREATE TABLE Periodos_Diarios(
 	,SN_Ativo	Char(1)	NOT NULL DEFAULT('S')
 	,CONSTRAINT chk_periodos_diarios_sn_ativo CHECK (SN_Ativo IN ('S', 'N'))
 	,CONSTRAINT fk_periodos_diarios_periodos FOREIGN KEY (ID_Periodo) REFERENCES Periodos(ID_Periodo)
+)
+
+CREATE TABLE Votos_Diarios(
+	 ID_Voto_Diario			Integer  NOT NULL Identity(1,1) PRIMARY KEY
+	,ID_Periodo_Resultado	Integer	 NOT NULL
+	,ID_Turma_Aluno			Integer	 NOT NULL
+	,DH_Inclusao			Datetime NOT NULL
+	,ID_Periodo_Diario		Integer  NOT NULL
+	,CONSTRAINT fk_votos_diarios_periodos_resultados FOREIGN KEY (ID_Periodo_Resultado) REFERENCES Periodos_Resultados(ID_Periodo_Resultado)
+	,CONSTRAINT fk_votos_diarios_turma_aluno FOREIGN KEY (ID_Turma_Aluno) REFERENCES Turma_Aluno(ID_Turma_Aluno)
+	,CONSTRAINT fk_votos_diarios_periodos_diarios FOREIGN KEY (ID_Periodo_Diario) REFERENCES Periodos_Diarios(ID_Periodo_Diario)
 )
 
 CREATE TABLE Turma_Configuracoes(
