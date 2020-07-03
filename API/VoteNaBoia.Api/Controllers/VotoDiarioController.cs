@@ -25,14 +25,15 @@ namespace VoteNaBoia.Api.Controllers
 
 
         [Route(""), HttpPost]
-        public async Task<IActionResult> Post([FromBody] VotoDiarioDTO votoDiario)
+        public async Task<IActionResult> Post([FromBody] Voto voto)
         {
             var responseContent = new ResponseContent();
 
             try
                
             {
-                await _votoDiarioBLL.InsertVotoDiarioAsync(new VotoDiario(id:0,idPeriodoResultado:votoDiario.IDPeriodoResultado,idTurmaAluno:votoDiario.IDTurmaAluno,dataHora:votoDiario.DHInclusao));
+               // VotoDiario votoDiario = new VotoDiario(id: 0, idPeriodoResultado: votoDiario.IDPeriodoResultado, idTurmaAluno: votoDiario.IDTurmaAluno, dataHora: votoDiario.DHInclusao);
+                await _votoDiarioBLL.InsertVotoDiarioAsync(voto);
                 responseContent.Message = "Voto cadastrado com sucesso!!";
                 return Ok(responseContent);
             }
@@ -49,7 +50,7 @@ namespace VoteNaBoia.Api.Controllers
         }
 
         // ROTA PARA PEGAR RESTAURANTES DISPONÍVEIS PARA VOTAÇÃO DIÁRIA
-        [Route("{idTurma}/{data}"), HttpGet]
+        [Route("{idTurma}"), HttpGet]
         public async Task<IActionResult> Get(int idTurma)
         {
             var responseContent = new ResponseContent();
@@ -79,15 +80,15 @@ namespace VoteNaBoia.Api.Controllers
 
 
         // ROTA PARA MOSTRAR O RESTAURANTE VENCEDOR
-        [Route("resultado/{idTurmaAluno}/{data}"), HttpGet]
-        public async Task<IActionResult> GetResultado(int idTurmaAluno)
+        [Route("resultado/{idTurma}"), HttpGet]
+        public async Task<IActionResult> GetResultado(int idTurma)
         {
             var responseContent = new ResponseContent();
 
             try
             {
                 DateTime data = new DateTime(2020,06,20);
-                responseContent.Object = await _votoDiarioBLL.GetVotoDiarioAsync(idTurmaAluno,data);
+                responseContent.Object = await _votoDiarioBLL.GetResultadoVotoDiarioAsync(idTurma);
 
                 if (responseContent.Object == null)
                 {

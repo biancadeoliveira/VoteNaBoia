@@ -11,6 +11,7 @@ namespace VoteNaBoia.BLL.Infra
         Task<Restaurante> GetRestauranteByIdAsync(int idRestaurante);
         Task<List<Restaurante>> GetRestauranteByNameAsync(string nome, int idTurma);
         Task<List<Restaurante>> GetAllRestauranteAsync(int idTurma);
+        Task<List<Restaurante>> GetRestaurantesInativosAsync(int idTurma);
         Task<bool> isRestauranteAtivo(int idRestaurante);
         Task<bool> isRestauranteJaCadastrado(string nome, string endereco, int idTurma);
         Task<bool> isRestauranteJaCadastradoById(int idRestaurante, int idTurma);

@@ -8,10 +8,9 @@ namespace VoteNaBoia.BLL.Infra
 {
     public interface IPeriodoDiarioBLL : IDisposable
     {
-        Task<PeriodoDiario> GetUltimoPeriodoAsync(int IDTurma);
-       // Task<List<Periodo>> GetAllPeriodosAsync(int IDTurma);
+        Task<PeriodoDiario> GetUltimoPeriodoAsync(int IDPeriodo);
         Task AbrirPeriodo(int IDTurma);
         Task FecharPeriodo(int IDTurma);
-        Task<bool> IsPeriodoAbertoAsync(int IDPeriodo);
+        Task<bool> IsPeriodoAbertoAsync(int IDPeriodoDiario);
     }
 }

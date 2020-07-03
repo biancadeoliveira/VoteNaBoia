@@ -11,10 +11,12 @@ namespace VoteNaBoia.BLL
     public class RestauranteBLL:IRestauranteBLL
     {
         private readonly IRestauranteRepository _restauranteRepository;
+        private readonly IPagamentoRestauranteBLL _pagamentoRestauranteBLL;
         
-        public RestauranteBLL(IRestauranteRepository restauranteRepository) 
+        public RestauranteBLL(IRestauranteRepository restauranteRepository, IPagamentoRestauranteBLL pagamentoRestauranteBLL) 
         {
             _restauranteRepository = restauranteRepository;
+            _pagamentoRestauranteBLL = pagamentoRestauranteBLL;
         }
 
 
@@ -35,7 +37,6 @@ namespace VoteNaBoia.BLL
             {
                 _restauranteRepository.CreateRestauranteAsync(restaurante);
                 await _restauranteRepository.UnitOfWork.Commit();
-                
             }
             
         }
@@ -62,6 +63,13 @@ namespace VoteNaBoia.BLL
             new List<Restaurante>();
 
             return await _restauranteRepository.GetAllRestauranteAsync(idTurma);
+        }
+
+        public async Task<List<Restaurante>> GetRestaurantesInativosAsync(int idTurma)
+        {
+            new List<Restaurante>();
+
+            return await _restauranteRepository.GetAllRestaurantesInativosAsync(idTurma);
         }
 
         public async Task UpdateRestauranteAsync(Restaurante restaurante)

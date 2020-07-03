@@ -34,6 +34,8 @@ namespace VoteNaBoia.Api
             services.AddScoped<VoteNaBoiaDbContext>();
             //REPOSITÓRIO
             services.AddScoped<IRestauranteRepository, RestauranteRepository>();
+            services.AddScoped<IFormaPagamentoRepository, FormaPagamentoRepository>();
+            services.AddScoped<IPagamentoRestauranteRepository, PagamentoRestauranteRepository>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<ITurmaRepository, TurmaRepository>();
             services.AddScoped<ITurmaAlunoRepository, TurmaAlunoRepository>();
@@ -46,6 +48,8 @@ namespace VoteNaBoia.Api
 
             //BLL
             services.AddScoped<IRestauranteBLL, RestauranteBLL>();
+            services.AddScoped<IFormaPagamentoBLL, FormaPagamentoBLL>();
+            services.AddScoped<IPagamentoRestauranteBLL, PagamentoRestauranteBLL>();
             services.AddScoped<IAlunoBLL, AlunoBLL>();
             services.AddScoped<ITurmaBLL, TurmaBLL>();
             services.AddScoped<ITurmaAlunoBLL, TurmaAlunoBLL>();
