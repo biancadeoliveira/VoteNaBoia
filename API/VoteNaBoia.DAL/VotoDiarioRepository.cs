@@ -24,11 +24,11 @@ namespace VoteNaBoia.DAL
             _dbContext?.Dispose();
         }
 
-        public async Task<int> GetResultadoVotoDiarioAsync(int IDTurmaAluno,DateTime DHInclusao)
+        public int GetResultadoVotoDiarioAsync( int idPeriodoDiario)
         {
 
             var votos = _dbContext.VotoDiario
-            .Where(x => x.DHInclusao >= DHInclusao && x.IDTurmaAluno.Equals(IDTurmaAluno));
+            .Where(x => x.IDPeriodoDiario.Equals(idPeriodoDiario));
             foreach(var i in votos.GroupBy(v=> v.IDPeriodoResultado).Select(group=> new { 
                 periodo = group.Key,
                 total = group.Count()
@@ -46,6 +46,11 @@ namespace VoteNaBoia.DAL
         public void InsertVotoDiarioAsync(VotoDiario votoDiario)
         {
             _dbContext.VotoDiario.Add(votoDiario);
+        }
+
+        public async Task<VotoDiario> GetVotoDiarioAsync(int idPeriodoDiario, int idTurmaAluno)
+        {
+            return await _dbContext.VotoDiario.Where(x => x.IDPeriodoDiario.Equals(idPeriodoDiario) && x.IDTurmaAluno.Equals(idTurmaAluno)).FirstOrDefaultAsync();
         }
     }
 }

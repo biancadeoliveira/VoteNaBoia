@@ -20,10 +20,10 @@ namespace VoteNaBoia.DAL
         public IUnitOfWork UnitOfWork => _dbContext;
 
  
-        public void CreateRestauranteAsync(Restaurante restaurante)
+        public void  CreateRestauranteAsync(Restaurante restaurante)
         {
 
-            _dbContext.Restaurante.Add(restaurante);
+             _dbContext.Restaurante.Add(restaurante);
         }
 
         public void Dispose()
@@ -58,7 +58,12 @@ namespace VoteNaBoia.DAL
                 .Where(x=> x.IDTurma.Equals(idTurma)).ToListAsync();
         }
 
-
+        public async Task<List<Restaurante>> GetAllRestaurantesInativosAsync(int idTurma)
+        {
+            return await _dbContext.Restaurante
+                .Include(x => x.PagamentoRestaurante).ThenInclude(p => p.FormaPagamento)
+                .Where(x => x.IDTurma.Equals(idTurma) && x.SNAtivo.Equals('N')).ToListAsync();
+        }
         public void UpdateRestauranteAsync(Restaurante restaurante)
         {
             //VERIFICA SE O OBJETO ESTÁ ATACHADO

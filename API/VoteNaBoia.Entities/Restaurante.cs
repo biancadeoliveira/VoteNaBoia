@@ -50,7 +50,7 @@ namespace VoteNaBoia.Entities
         public  ICollection<PagamentoRestaurante> PagamentoRestaurante { get; set; }
         protected Restaurante() { }
 
-        public Restaurante(int id,string nome, string tipo,int idTurma, string endereco, string telefone, string link, string email, char ativo) 
+        public Restaurante(int id,string nome, string tipo,int idTurma, string endereco, string telefone, string link, string email, char ativo, ICollection<PagamentoRestaurante> PagamentoRestaurante) 
         {
             this.IDRestaurante = id;
             this.NMNome = nome;
@@ -61,6 +61,7 @@ namespace VoteNaBoia.Entities
             this.Link = link;
             this.Email = email;
             this.SNAtivo = ativo;
+            this.PagamentoRestaurante = PagamentoRestaurante;
         }
 
         private void Validations(string RestNome, string RestTipo, string RestEndereco) 

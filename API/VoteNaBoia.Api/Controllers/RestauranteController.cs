@@ -30,7 +30,8 @@ namespace VoteNaBoia.Api.Controllers
 
             try
             {
-                await _restauranteBLL.CreateRestauranteAsync(new Restaurante(id:0,nome:restaurante.NMNome,tipo: restaurante.NMTipo,idTurma: restaurante.IDTurma,endereco: restaurante.Endereco,telefone: restaurante.NOTelefone, link: restaurante.Link, email: restaurante.Email, ativo: restaurante.SNAtivo));
+                var restauranteObj = new Restaurante(id: 0, nome: restaurante.NMNome, tipo: restaurante.NMTipo, idTurma: restaurante.IDTurma, endereco: restaurante.Endereco, telefone: restaurante.NOTelefone, link: restaurante.Link, email: restaurante.Email, ativo: restaurante.SNAtivo,PagamentoRestaurante: restaurante.PagamentoRestaurante);
+                await _restauranteBLL.CreateRestauranteAsync(restauranteObj);
                 responseContent.Message = "Restaurante cadastrado com sucesso!!";
                 return Ok(responseContent);
             }
@@ -59,7 +60,7 @@ namespace VoteNaBoia.Api.Controllers
 
             try
             {
-                await _restauranteBLL.UpdateRestauranteAsync(new Restaurante(id: restaurante.IDRestaurante, nome: restaurante.NMNome, tipo: restaurante.NMTipo, idTurma: restaurante.IDTurma, endereco: restaurante.Endereco, telefone: restaurante.NOTelefone, link: restaurante.Link, email: restaurante.Email, ativo: restaurante.SNAtivo));
+                await _restauranteBLL.UpdateRestauranteAsync(new Restaurante(id: restaurante.IDRestaurante, nome: restaurante.NMNome, tipo: restaurante.NMTipo, idTurma: restaurante.IDTurma, endereco: restaurante.Endereco, telefone: restaurante.NOTelefone, link: restaurante.Link, email: restaurante.Email, ativo: restaurante.SNAtivo,null));
                 responseContent.Message = "Cadastro do restaurante alterado com sucesso!!";
                 return Ok(responseContent);
             }
@@ -179,6 +180,35 @@ namespace VoteNaBoia.Api.Controllers
             try
             {
                 responseContent.Object = await _restauranteBLL.GetAllRestauranteAsync(idTurma);
+
+                if (responseContent.Object == null)
+                {
+                    responseContent.Message = "A pesquisa não retornou dados";
+                    return NotFound(responseContent);
+                }
+                responseContent.Message = "Operação realizada com sucesso!!";
+                return Ok(responseContent);
+            }
+            catch (BusinessException bex)
+            {
+                responseContent.Message = bex.Message;
+                return BadRequest(responseContent);
+            }
+            catch (Exception ex)
+            {
+                responseContent.Message = ex.Message;
+                return BadRequest(responseContent);
+            }
+        }
+
+        [Route("inativos/{idTurma}"), HttpGet]
+        public async Task<IActionResult> GetInativos(int idTurma)
+        {
+            var responseContent = new ResponseContent();
+
+            try
+            {
+                responseContent.Object = await _restauranteBLL.GetRestaurantesInativosAsync(idTurma);
 
                 if (responseContent.Object == null)
                 {

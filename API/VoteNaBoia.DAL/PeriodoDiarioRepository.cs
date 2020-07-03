@@ -55,9 +55,9 @@ namespace VoteNaBoia.DAL
             return await _dbContext.PeriodoDiario.Where(x => x.IDPeriodo.Equals(IDPeriodo)).OrderByDescending(x => x.DHInicio).FirstOrDefaultAsync();
         }
 
-        public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodo)
+        public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodoDiario)
         {
-            var periodoDiario = await _dbContext.PeriodoDiario.Where(x => x.IDPeriodo.Equals(IDPeriodo)).FirstOrDefaultAsync();
+            var periodoDiario = await _dbContext.PeriodoDiario.Where(x => x.IDPeriodoDiario.Equals(IDPeriodoDiario)).FirstOrDefaultAsync();
             
             if(periodoDiario.SNAtivo.Equals('S'))
             {

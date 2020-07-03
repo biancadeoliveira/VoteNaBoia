@@ -9,6 +9,7 @@ namespace VoteNaBoia.Entities.DTO
         public int IDVotoDiario { get; set; }
         public int IDPeriodoResultado { get; set; }
         public int IDTurmaAluno { get; set; }
+        public int IDPeriodoDiario { get; set; }
         public DateTime DHInclusao { get; set; }
     }
 }

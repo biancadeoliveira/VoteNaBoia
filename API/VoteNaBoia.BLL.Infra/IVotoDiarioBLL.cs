@@ -8,10 +8,10 @@ namespace VoteNaBoia.BLL.Infra
 {
     public interface IVotoDiarioBLL: IDisposable
     {
-        // Task<List<VotoDiario>> GetAllVotoDiarioAsync(DateTime DHInclusao);
-        Task<Restaurante> GetVotoDiarioAsync(int IDTurmaAluno,DateTime DHInclusao);
-        Task InsertVotoDiarioAsync(VotoDiario votoDiario);
+        Task<Restaurante> GetResultadoVotoDiarioAsync(int idTurma);
+        Task InsertVotoDiarioAsync(Voto voto);
         Task<List<Restaurante>> GetVotoDiarioRestaurantesAsync(int idTurma);
+        Task<bool> IsAlunoJaVotouAsync(int idPeriodoDiario, int idTurmaAluno);
 
     }
 }

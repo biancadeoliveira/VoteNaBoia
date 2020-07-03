@@ -11,9 +11,11 @@ namespace VoteNaBoia.BLL
     public class PeriodoDiarioBLL : IPeriodoDiarioBLL
     {
         private readonly IPeriodoDiarioRepository _periodoDiarioRepository;
-        public PeriodoDiarioBLL(IPeriodoDiarioRepository periodoDiarioRepository)
+        private readonly IPeriodoBLL _periodoBLL;
+        public PeriodoDiarioBLL(IPeriodoDiarioRepository periodoDiarioRepository, IPeriodoBLL periodoBLL)
         {
             _periodoDiarioRepository = periodoDiarioRepository;
+            _periodoBLL = periodoBLL;
         }
 
         public void Dispose()
@@ -23,18 +25,42 @@ namespace VoteNaBoia.BLL
 
         public async Task AbrirPeriodo(int IDPeriodo)
         {
-            await this.FecharPeriodo(IDPeriodo);    
+            //  await this.FecharPeriodo(IDPeriodo);
 
-            var periodoDiario = new PeriodoDiario();
+          //  var msg = "";
+            var dhInsert = DateTime.Now;
 
-            periodoDiario.IDPeriodoDiario = 0;
-            periodoDiario.IDPeriodo = IDPeriodo;
-            periodoDiario.DHInicio = DateTime.Now;
-            periodoDiario.DHFim = DateTime.Parse("3000-12-01");
-            periodoDiario.SNAtivo = 'S';
+            if (await _periodoBLL.IsPeriodoAbertoAsync(IDPeriodo)) 
+            {
+                var periodoDiarioAtual = await this.GetUltimoPeriodoAsync(IDPeriodo);
+                if(await this.IsPeriodoAbertoAsync(periodoDiarioAtual.IDPeriodoDiario)) //teste se periodo diário atual está aberto
+                {
+                    // testa se dhInsert é maior que o início e menor que o fim
+                    if (dhInsert.CompareTo(periodoDiarioAtual.DHInicio)==1 && dhInsert.CompareTo(periodoDiarioAtual.DHFim)==-1)
+                    {
+                        // msg = "Período não "
+                    }
+                    else
+                    {
+                        await this.FecharPeriodo(periodoDiarioAtual.IDPeriodoDiario); //fecha periíodo e abre um novo
+                        var dhFim = new DateTime();
+                        var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: dhFim.AddDays(1), 'S');
 
-            _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
-            await _periodoDiarioRepository.UnitOfWork.Commit();
+                        _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
+                        await _periodoDiarioRepository.UnitOfWork.Commit();
+                    }
+                }
+                else
+                {
+                    var dhFim = new DateTime();
+                    var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: dhFim.AddDays(1), 'S');
+
+                    _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
+                    await _periodoDiarioRepository.UnitOfWork.Commit();
+                }
+            }
+
+           
         }
 
         public async Task FecharPeriodo(int IDTurma)
@@ -52,19 +78,15 @@ namespace VoteNaBoia.BLL
             }
         }
 
-     /*   public async Task<List<Periodo>> GetAllPeriodosTurmaAsync(int IDTurma)
-        {
-            return null; // await _periodoDiarioRepository.GetAllPeriodosTurmaAsync(IDTurma);
-        }*/
 
-        public async Task<PeriodoDiario> GetUltimoPeriodoAsync(int IDTurma)
+        public async Task<PeriodoDiario> GetUltimoPeriodoAsync(int IDPeriodo)
         {
-            return await _periodoDiarioRepository.GetUltimoPeriodoAsync(IDTurma);
+            return await _periodoDiarioRepository.GetUltimoPeriodoAsync(IDPeriodo);
         }
 
-        public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodo)
+        public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodoDiario)
         {
-            return await _periodoDiarioRepository.IsPeriodoAbertoAsync(IDPeriodo);
+            return await _periodoDiarioRepository.IsPeriodoAbertoAsync(IDPeriodoDiario);
         }
     }
 }
