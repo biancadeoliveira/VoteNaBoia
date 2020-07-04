@@ -38,7 +38,7 @@ namespace VoteNaBoia.BLL
         {
          //   var turmaAluno = await _turmaAlunoBLL.GetTurmaAlunoAsync(idAluno, idTurma); //pega idTurmaAluno
             var ultimoPeriodoTurma = await _periodoBLL.GetUltimoPeriodoAsync(idTurma); // pega idPeriodo
-            var periodoDiario =await  _periodoDiarioBLL.GetUltimoPeriodoAsync(ultimoPeriodoTurma.IDPeriodo);
+            var periodoDiario =await  _periodoDiarioBLL.GetUltimoPeriodoDiarioAsync(ultimoPeriodoTurma.IDPeriodo);
             var idPeriodoResultado =   _votoDiarioRepository.GetResultadoVotoDiarioAsync(periodoDiario.IDPeriodo);
             var periodoResultado = await _periodoResultadoBLL.GetPeriodo(idPeriodoResultado);
 
@@ -53,14 +53,17 @@ namespace VoteNaBoia.BLL
             var msg = "";
             var turmaAluno = await  _turmaAlunoBLL.GetTurmaAlunoAsync(voto.idAluno, voto.idTurma); //pega idTurmaAluno
             var ultimoPeriodoTurma = await _periodoBLL.GetUltimoPeriodoAsync(voto.idTurma); // pega idPeriodo
+
             if (await _periodoBLL.IsPeriodoAbertoAsync(ultimoPeriodoTurma.IDPeriodo)) //valida se período está aberto
             {
+                await _periodoDiarioBLL.AbrirPeriodoDiario(ultimoPeriodoTurma.IDPeriodo);
+
                 //idTurmaAluno idPeriodoResultado (id rest + id_periodo) // pegar o periodo resultado
                 var periodoResultado = await _periodoResultadoBLL.GetPeriodo(0, voto.idRestaurante, ultimoPeriodoTurma.IDPeriodo);
                 if (periodoResultado != null)
                 {
                     // pegar ultimo periodo diario e validar se está aberto
-                    var periodoDiario = await _periodoDiarioBLL.GetUltimoPeriodoAsync(periodoResultado.IDPeriodo);
+                    var periodoDiario = await _periodoDiarioBLL.GetUltimoPeriodoDiarioAsync(periodoResultado.IDPeriodo);
                     if (await _periodoDiarioBLL.IsPeriodoAbertoAsync(periodoDiario.IDPeriodoDiario))
                     {
                         // validar se aluno (idTurmaAluno) já existe na tabela de voto diário
