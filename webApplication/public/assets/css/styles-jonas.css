@@ -1,0 +1,350 @@
+/* Css pagina inicial */
+
+img.logoinicial {
+    text-align: center;
+    max-width: 300px;
+}
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+.center-block {
+    max-width: 100%;
+    width: 305px;
+    display: block;
+    margin: auto;
+    margin-top: 25%;
+}
+button.btn.btn-lg.btn-primary.btn-block {
+    background: #2A3D54;
+    border-color: #2A3D54;
+    font-size: 21px;
+    border-radius: 50px;
+    margin-top: 5%;
+}
+p.class {
+    font-size: 300px;
+}
+/* CSS PAGINA RESULTADOS */
+h1.resultados {
+    font-weight: 700;
+    border-bottom: 3px solid #e4dddd;
+    line-height: 80px;
+    padding-left: 2%;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+    font-size: 70px;
+    text-align: left;
+    padding-left: 4%;
+    font-weight: 900;
+    line-height: 80px;
+}
+button.btn.btn-primary.btn-lg.btn-block.relatorios {
+    background: #CB3943;
+    font-size: 50px;
+    font-weight: 700;
+    border-radius: 21px;
+    padding: 2% 0% 2% 0%;
+    border-color: #CB3943;
+    margin-top: 1%;
+}
+h1.resultados.meusultimosvotos {
+    font-weight: 100;
+    margin-top: 2%;
+}
+.row.border.dias {
+    border: 1px solid #dee2e6!important;
+    border-radius: 30px;
+    min-height: 60px;
+    margin-bottom: 1%;
+}
+p.diasdasemana {
+    padding: 3% 0% 0% 5%;
+    font-size: 20px;
+    color: grey;
+}
+i.fas.fa-calendar-day.paddingrigth {
+    padding-right: 5%;
+}
+p.diasdasemana.nomerestaurante {
+    text-align: left;
+}
+img.rounded.float-right.restaurante {
+    max-width: 40px;
+    padding-top: 3%;
+}
+i.far.fa-newspaper.big {
+    margin-right: 2%;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+    font-size: 80px;
+    text-align: left;
+    padding-left: 4%;
+    font-weight: 600;
+    line-height: 80px;
+}
+img.logovotenaboia {
+    max-width: 80px;
+}
+.iconesmenu {
+    font-size: 40px;
+    color: #2a3d54;
+}
+li.nav-item {
+    margin-right: 15%;
+}
+
+
+
+/* CSS PAGINA VOTACAODIARIA */
+
+img.votacaodiaria {
+    max-width: 100px;
+    padding-top: 10%;
+}
+h1.nomerestaurante {
+    font-family: 'Roboto' ;
+    max-width: 100px;
+    margin-left: -30px;
+    margin-top: 2%;
+    font-size: 50px;
+    color: #FFFFFF;
+    font-weight: 700;
+    line-height: 80px;
+}
+
+h1.subtitulo {
+    margin-top: -5%;
+    margin-left: -30;
+    margin: -5%, -30%, 0%, 30%;
+    font-family: "Roboto";
+    font-size: 30px;
+    color: #FFFFFF;
+}
+div.rounded.principalvotacao {
+    background:#982649;
+    border-radius: 2.5rem !important;
+}
+div.descricao.votodiario {
+    background: #982649;
+    border-radius: 2.5rem !important;
+}
+.row.border.topo {
+    border-radius: 30px;
+    align-content: initial;
+}
+
+p.descricao {
+    font-family: 'Roboto';
+    padding: 3% 0% 0% 5%;
+    font-size: 30px;
+    color: #FFFFFF;
+}
+
+
+img.icone.votodiario {
+  margin-left: 20%;
+  max-width: 130;
+  padding-top: 10%;
+}
+
+img.icone.formapa_gamento {
+    padding-left: 10%;
+    justify-content: center
+}
+
+
+p.descricao.confirmacao {
+    font-size: 50px;
+    text-align: center;
+    color:#505050;
+}
+
+
+button.btn.btn-primary.btn-lg.telefone {
+    color: #982649;
+    min-height: 10px;
+    margin-right: 10px;
+    background: #ffffff;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 50px;
+
+}
+
+div.mapa {
+    min-height: 10px;
+    margin-right: 10px;
+}
+
+button.btn.btn-lg.btn-primary.btn-block {
+    background: #2A3D54;
+    border-color: #2A3D54;
+    font-size: 21px;
+    border-radius: 50px;
+    margin-top: 5%;
+    text-align: center;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.confirmar {
+    min-height: 100px;
+    font-size: 30px;
+    background-color: #518D5F;
+    border: transparent;
+    text-align: center;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.voltar {
+    min-height: 100px;
+    font-size: 30px;
+    background-color: #CB3943;
+    border: transparent;
+}
+
+img.rodape {
+    bottom: 0;
+    width: 100%;
+}
+
+div.col-3.align-self-end.score{
+    padding: 5%;
+
+}
+
+/* CSS PAGINA CONFIRMACAOVOTACAODIARIA */
+
+p.descricao.confirmacao.resultado {
+    font-size: 80px;
+    text-align: center;
+    color:#323232;
+}
+
+button.btn.btn-primary.btn-lg.home {
+    min-height: 100px;
+    font-size: 30px;
+    background-color: #CB3943;
+    border: transparent;
+    align-items: center;
+    display: block;
+    margin-left: 50%;
+    text-align: center;
+}
+
+
+/* CSS PAGINA VOTACAODIARIAVISUALIZACAOESCOLHA*/
+
+h1.votacaosemanal
+{
+    font-weight: 700;
+    border-bottom: 3px solid #e4dddd;
+    line-height: 80px;
+}
+
+
+button.btn.btn-primary.btn-lg.btn-block.listafinal.jonas
+{
+    min-height: 150px;
+    background-color: #982649;
+    border-color: #982649;
+    margin-top: 3%;
+}
+/* CSS PAGINA RESULTADOSUM*/
+
+img.rounded
+{
+    max-width: 125px;
+}
+
+img.rounded.float-right.restaurante {
+    max-width: 40px;
+    padding-top: 3%;
+}
+
+.row.border.dias {
+    border: 1px solid #dee2e6!important;
+    border-radius: 30px;
+    min-height: 60px;
+    margin-bottom: 1%;
+    margin-left: 10%
+}
+.col-5 {
+
+    max-width: 30%;
+}
+
+img.ranking  {
+    width: 150%;
+    padding-top: 20%;
+}
+
+img.rounded.float-right.logo {
+    float: inherit;
+    box-shadow:  all;
+}
+
+h6.subtitulo {
+    font-size: 2rem;
+}
+
+/* CSS PAGINA VOTACAOSEMANALLIMPARTUDO*/
+h1.nomerestaurante.subtitulo {
+    font-size: 2rem;
+    max-width: 100%;
+    margin-top: 10%
+}
+
+h1.nomerestaurante.somatoria {
+    font-size: 2rem;
+    max-width: 100%;
+    margin-left: 30%;
+    margin-top: 10%
+}
+
+button.btn.btn-primary.btn-lg.btn-block.listafinal.resultado {
+    margin-top: 5%;
+
+}
+
+button.btn.btn-primary.btn-lg.btn-block.voltar.resultado{
+    width: 20%;
+}
+
+/* CSS PAGINA VOTACAOSEMANALPRECISUALIZACAORESTAURANTE*/
+
+div.rounded.principalvotacao.relatorio {
+    min-height: 150px;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-style: 1%;
+}
+
+label.jonas {
+    color: grey;
+    font-size: 30px;
+    margin-right: 10%;
+}
+
+form {
+    border-color: #FFFFFF;
+}
+button.btn.btn-primary.btn-lg.pdf{
+    background: #518D5F;
+    border-color: #518D5F;
+    font-size: 21px;
+    border-radius: 50px;
+    margin-top: 5%;
+    width: 60%;
+    margin-top: 15%;
+}
+
+button.btn.btn-primary.btn-lg.pdf.voltar {
+    background: #CB3943;
+    border-color: #CB3943;
+}

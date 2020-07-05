@@ -1,0 +1,296 @@
+/* Css pagina inicial */
+
+img.logoinicial {
+    text-align: center;
+    max-width: 300px;
+}
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}
+.center-block {
+    max-width: 100%;
+    width: 305px;
+    display: block;
+    margin: auto;
+    margin-top: 25%;
+}
+button.btn.btn-lg.btn-primary.btn-block {
+    background: #2A3D54;
+    border-color: #2A3D54;
+    font-size: 21px;
+    border-radius: 50px;
+    margin-top: 5%;
+}
+
+p.class
+{
+    font-size: 300px;
+}
+
+/* CSS - VOTACAO SEMANAL */
+
+h1.votacaosemanal
+{
+    font-weight: 700;
+    border-bottom: 3px solid #e4dddd;
+    line-height: 80px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.addrestaurante
+{
+    min-height: 400px;
+    background-color: #A799B7;
+    border-color: #A799B7;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.listafinal
+{
+    min-height: 150px;
+    background-color: #982649;
+    border-color: #982649;
+    margin-top: 3%;
+}
+
+button.btn.btn-info.position-absolute
+{
+    min-width: 40px;
+    min-height: 40px;
+    background-image: url('../image/btn_more_info.png');
+    background-size: 100%;
+    background-color: transparent;
+    border: transparent;
+    bottom: 80%;
+    left: 80%;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.enviarlista
+{
+    min-height: 100px;
+    font-size: 30px;
+    background-color: #518D5F;
+    border: transparent;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.limparlista
+{
+    min-height: 100px;
+    font-size: 30px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.voltar
+{
+    min-height: 100px;
+    font-size: 30px;
+    background-color: #CB3943;
+    border: transparent;
+}
+
+i.fas.fa-check
+{
+    padding-right: 3%;
+}
+
+img.rounded
+{
+    max-width: 125px;
+}
+
+p.h1.text-center
+{
+    padding-top: 5%;
+}
+
+p.h3.text-center
+{
+    padding-bottom: 3%;
+}
+
+.col
+{
+    color: white;
+}
+
+p.h1.text-left
+{
+    font-size: 50px;
+}
+
+p.h3.text-left
+{
+    font-size: 35px;
+    margin-top: 3%;
+}
+
+.jumbotron
+{
+    margin-top: 3%;
+    background-color: #A799B7;
+    border-radius: 50px;
+    min-height: 400px;
+}
+
+hr.my-4
+{
+    border-top: 2px solid white;
+}
+
+.col-3.align-self-end
+{
+    margin-bottom: 1.5%;
+}
+
+i.far.fa-money-bill-alt
+{
+    font-size: 32px;
+}
+
+i.fas.fa-money-check
+{
+    font-size: 32px;
+}
+
+i.far.fa-credit-card
+{
+    font-size: 32px;
+}
+
+i.fab.fa-cc-apple-pay
+{
+    font-size: 32px;
+}
+
+i.fas.fa-check-circle
+{
+    color: #518D5F;
+    font-size: 40px;
+}
+
+.embed-responsive.embed-responsive-16by9
+{
+    max-height: 300px;
+}
+
+/* CSS PAGINA RESULTADOS */
+
+h1.resultados {
+    font-weight: 700;
+    border-bottom: 3px solid #e4dddd;
+    line-height: 80px;
+    padding-left: 2%;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+    font-size: 70px;
+    text-align: left;
+    padding-left: 4%;
+    font-weight: 900;
+    line-height: 80px;
+}
+button.btn.btn-primary.btn-lg.btn-block.relatorios {
+    background: #CB3943;
+    font-size: 50px;
+    font-weight: 700;
+    border-radius: 21px;
+    padding: 2% 0% 2% 0%;
+    border-color: #CB3943;
+    margin-top: 1%;
+}
+h1.resultados.meusultimosvotos {
+    font-weight: 100;
+    margin-top: 2%;
+}
+.row.border.dias {
+    border: 1px solid #dee2e6!important;
+    border-radius: 30px;
+    min-height: 60px;
+    margin-bottom: 1%;
+}
+p.diasdasemana {
+    padding: 3% 0% 0% 5%;
+    font-size: 20px;
+    color: grey;
+}
+i.fas.fa-calendar-day.paddingrigth {
+    padding-right: 5%;
+}
+p.diasdasemana.nomerestaurante {
+    text-align: left;
+}
+img.rounded.float-right.restaurante {
+    max-width: 40px;
+    padding-top: 3%;
+}
+i.far.fa-newspaper.big {
+    margin-right: 2%;
+}
+button.btn.btn-primary.btn-lg.btn-block.resultado {
+    min-height: 400px;
+    font-size: 80px;
+    text-align: left;
+    padding-left: 4%;
+    font-weight: 600;
+    line-height: 80px;
+}
+img.logovotenaboia {
+    max-width: 80px;
+}
+.iconesmenu {
+    font-size: 40px;
+    color: #2a3d54;
+}
+li.nav-item {
+    margin-right: 15%;
+}
+
+/* CSS PÁGINA CONFIGURAÇÕES */
+
+button.btn.btn-primary.btn-lg.btn-block.editprofile
+{
+    margin-top: 3%;
+    min-height: 150px;
+    font-size: 30px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.moderator
+{
+    background-color: #CB3943;
+    margin-top: 3%;
+    min-height: 150px;
+    font-size: 30px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block.manage
+{
+    margin-top: 3%;
+    min-height: 100px;
+    font-size: 30px;
+}
+
+form
+{
+    margin-top: 3%;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+width: 1.75rem;
+height: 1.75rem;
+}
+
+.custom-control-label
+{
+    color: #505050;
+    font-size: 25px;
+}
+i.fas.fa-sign-out-alt.otavio {
+    color: #CB3943;
+    font-size: 50px;
+}
+
+

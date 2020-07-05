@@ -13,73 +13,85 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () { // ok
     return view('home');
 });
 
-Route::get('/login', function () {
+Route::get('/login', function () { // ok
     return view('login');
 });
 
-Route::get('/cadastrar', function () {
+Route::get('/cadastro', function () { // ok
     return view('cadastro');
 });
 
-Route::get('/configuracoes', function () {
+Route::get('/configuracoes', function () { // ok
     return view('configuracoes');
 });
 
-Route::get('/confirmacaovotacaodiaria', function () {
+Route::get('/configuracoeseditarnotificacoes', function () { //ok
+    return view('configuracoeseditarnotificacoes');
+});
+
+Route::get('/configuracoeseditarperfil', function () { // ok
+    return view('configuracoeseditarperfil');
+});
+
+Route::get('/configuracoesmoderador', function () { // ok
+    return view('configuracoesmoderador');
+});
+
+Route::get('/confirmacaovotacaodiaria', function () { // ok
     return view('confirmacaovotacaodiaria');
 });
 
-Route::get('/loginsucess', function () {
+Route::get('/loginsucess', function () { //ok
     return view('loginsucess');
 });
 
-Route::get('/menuprincipal', function () {
+Route::get('/menuprincipal', function () { // ok
     return view('menuprincipal');
 });
 
-//Route::get('/resultados', function () {
-//    return view('resultados');
-//});
+Route::get('/resultados', function () { // ok
+    return view('resultados');
+});
 
-Route::get('/restaurantes/{id}', 'ApiController@listarRestaurantes')->name('restaurantes');
-Route::post('/restaurantes', 'ApiController@cadastrarRestaurante')->name('restaurante.store');
-
-Route::get('/resultadosum', function () {
+Route::get('/resultadosum', function () { // ok
     return view('resultadosum');
 });
 
-Route::get('/votacaodiaria', function () {
+Route::get('/votacaodiaria', function () { // ok
     return view('votacaodiaria');
 });
 
-Route::get('/votacaodiariavisualizacaoesolha', function () {
+Route::get('/votacaodiariavisualizacaoescolha', function () { // ok
     return view('votacaodiariavisualizacaoescolha');
 });
 
-Route::get('/votacaosemanal', function () {
+Route::get('/votacaosemanal', function () { //ok
     return view('votacaosemanal');
 });
 
-Route::get('/votacaosemanalconfirmacao', function () {
+Route::get('/votacaosemanalconfirmacao', function () { //ok
     return view('votacaosemanalconfirmacao');
 });
 
-Route::get('/votacaosemanallimpartudo', function () {
+Route::get('/votacaosemanallimpartudo', function () { //OK
     return view('votacaosemanallimpartudo');
 });
 
-Route::get('/votacaosemanallistarestaurante', function () {
+Route::get('/votacaosemanallistarestaurante', function () { //ok
     return view('votacaosemanallistarestaurante');
 });
 
-Route::get('/votacaosemanalmcdonalds', function () {
-    return view('votacaosemanalmcdonalds');
+Route::get('/votacaosemanalinforestaurante', function () { //ok
+    return view('votacaosemanalinforestaurante');
 });
 
-Route::get('/votacaosemanalprevisualizacaorestaurante', function () {
+Route::get('/votacaosemanalprevisualizacaorestaurante', function () { //ok
     return view('votacaosemanalprevisualizacaorestaurante');
 });
+
+Route::get('/restaurantes/{id}', 'ApiController@listarRestaurantes')->name('restaurantes');
+Route::post('/restaurantes', 'ApiController@cadastrarRestaurante')->name('restaurante.store');

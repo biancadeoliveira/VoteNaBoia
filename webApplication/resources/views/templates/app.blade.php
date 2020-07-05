@@ -8,7 +8,9 @@
     <link rel="shortcut icon" href="{{asset('assets/image/favicon-min.png')}}">
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
-    <link href="{{asset('assets/fontawesome/css/all.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/styles-jonas.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/styles-otavio.css')}}">
+    <link href="{{asset('assets\fontawesome\css\all.css')}}" rel="stylesheet">
     </head>
 <body>
     @yield('conteudo')
@@ -17,5 +19,3 @@
 <footer>
 </footer>
 </html>
-
-

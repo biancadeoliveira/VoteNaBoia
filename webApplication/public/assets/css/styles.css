@@ -100,3 +100,353 @@ img.logovotenaboia {
 li.nav-item {
     margin-right: 15%;
 }
+form.telalogin {
+    margin-top: 5%;
+}
+.form-group.form-check.telalogin {
+    margin: 5%;
+    text-align: center;
+}
+i.fas.fa-user-astronaut.cadastro {
+    font-size: 50px;
+    color: #fff;
+    background: #4e4e4e;
+    padding: 30%;
+    border-radius: 70px;
+}
+.nome {
+    margin: 5% 0% 0% -4%;
+}
+.center-block.cadastro {
+    margin-top: 10%;
+}
+button.btn.btn-lg.btn-primary.btn-block.voltarcadastro {
+    background: #CB3943;
+    border-color: #CB3943;
+    margin-top: 11%;
+}
+.center-block.loginsucess {
+    text-align: center;
+}
+i.far.fa-check-circle.loginsucess {
+    font-size: 50px;
+    color: green;
+    padding: 10% 0 10% 0;
+}
+button.btn.btn-lg.btn-primary.btn-block.voltarcadastro.loginsucess {
+    max-width: 30%;
+}
+img.avatarmenuprincipal {
+    max-width: 100px;
+    border-radius: 100px;
+}
+img.logomenuprincipal {
+    max-width: 100px;
+}
+p.bemvindomenuprincipal {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 2%;
+}
+b.nomeusuario {
+    font-size: 30px;
+    line-height: 0;
+}
+.row.menuprincipal {
+    margin-top: 2%;
+}
+i.fas.fa-sign-out-alt.menuprincipal {
+    font-size: 30px;
+    padding-top: 5%;
+    color: #CB3943;
+}
+p.dataatual {
+    text-align: center;
+    font-size: 20px;
+}
+i.fas.fa-calendar-day.menuprincipal {
+    font-size: 100px;
+    padding-right: 2%;
+}
+button.btn.btn-lg.btn-primary.btn-block.menuprincipal {
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5%;
+}
+i.fas.fa-calendar-week.menuprincipal{
+    font-size: 100px;
+    padding-right: 2%;
+}
+button.btn.btn-lg.btn-primary.btn-block.menuprincipal.result {
+    padding: 2% 0% 2% 0%;
+}
+button.btn.btn-lg.btn-primary.btn-block.menuprincipal.configs {
+    background: #CB3943;
+    padding: 2% 0 2% 0%;
+}
+i.fas.fa-cog.config {
+    padding-right: 2%;
+}
+
+/* CSS MOBILE MAX 600PX */
+@media only screen and (max-width: 600px){
+    i.fas.fa-calendar-day.menuprincipal {
+        font-size: 30px;
+        padding-right: 2%;
+    }
+    button.btn.btn-lg.btn-primary.btn-block.menuprincipal {
+        font-size: 30px;
+        font-weight: 400;
+        text-align: center;
+        padding: 3%;
+    }
+    i.fas.fa-calendar-week.menuprincipal {
+        font-size: 30px;
+        padding-right: 2%;
+    }
+    p.bemvindomenuprincipal {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 2%;
+        margin-left: 0%;
+        color: black;
+        line-height: 30px;
+    }
+    .col.icon {
+        max-width: 20px;
+    }
+    img.icone.votodiario {
+        margin-left: 0%!important;
+        max-width: 80px!important;
+        padding: 20% 0% 0% 10%;
+        text-align: right;
+    }
+    h1.nomerestaurante {
+        /* font-family: 'Roboto'; */
+        /* max-width: 100px; */
+        margin-left: 0px!important;
+        margin-top: 0!important;
+        font-size: 40px!important;
+        color: #FFFFFF;
+        /* font-weight: 700; */
+        line-height: 50px!important;
+    }
+    h1.subtitulo {
+        margin-top: 0%!important;
+        margin-left: 0px!important;
+        margin: 0!important;
+        font-family: "Roboto";
+        font-size: 15px!important;
+        color: #FFFFFF;
+    }
+    div.col-3.align-self-end.score {
+        padding: 0% 0% 0% 0%!important;
+    }
+    img.estrelasjonas {
+        margin-left: -108%;
+    }
+    p.descricao {
+        font-family: 'Roboto';
+        padding: 3% 0% 0% 5%;
+        font-size: 20px!important;
+        color: #FFFFFF;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.voltar.jonas {
+        min-height: 0px!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.confirmar.jonas {
+        min-height: 45px;
+        font-size: 16px;
+    }
+    iframe {
+        max-width: 100%;
+        margin-left: 1.5%;
+    }
+    p.h1.text-left.jonas {
+        font-size: 30px!important;
+    }
+    img.estrelasjonas.dois {
+        max-width: 140px;
+        margin: 30% 0% -110% -350%!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.listafinal.jonas {
+        min-height: 50px!important;
+        margin: 2% 1% 0% 1%!important;
+    }
+    p.h1.text-center.otavio {
+        font-size: 20px;
+    }
+    p.h3.text-center.otavio {
+        font-size: 15px;
+    }
+    button.btn.btn-info.position-absolute {
+        min-width: 27px!important;
+        min-height: 18px!important;
+        background-image: url(../image/btn_more_info.png);
+        background-size: 60%!important;
+        background-color: transparent;
+        border: transparent;
+        bottom: 80%!important;
+        left: 66%!important;
+        background-repeat: no-repeat;
+    }
+    img.rounded {
+        max-width: 45px!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.addrestaurante {
+        min-height: 150px!important;
+        background-color: #A799B7;
+        border-color: #A799B7;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.enviarlista {
+        font-size: 17px!important;
+        min-height: 0!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.limparlista {
+        font-size: 17px!important;
+        min-height: 0!important;
+    }
+    h1.nomerestaurante.jonas {
+        font-size: 30px!important;
+    }
+    img.estrelasjonas.diaria {
+        max-width: 100px;
+    }
+    button.btn.btn-primary.btn-lg.telefone {
+        font-size: 7px!important;
+    }
+    a.faleconoscodiario {
+        font-size: 13px;
+        color: white;
+    }
+    button.btn.btn-primary.btn-lg.pdf {
+        width: 100%!important;
+    }
+    h6.subtitulo.jonas {
+        font-size: 23px;
+    }
+    .col.jonas {
+        color: black;
+        max-width: 100%;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.resultado.s {
+        min-height: 200px!important;
+        font-size: 25px;
+        line-height: 30px;
+        padding-left: 10%;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.relatorios.s {
+        font-size: 30px;
+    }
+    h1.resultados.meusultimosvotos.s {
+        font-size: 29px;
+    }
+    .col-sm.s {
+        max-width: 50%;
+    }
+    .row.border.dias.s {
+        margin: 2% 0% 0% 0%!important;
+        min-height: 0!important;
+    }
+    p.diasdasemana.s {
+        font-size: 13px;
+        padding-top: 10%;
+    }
+    img.rounded.float-right.restaurante.s {
+        max-width: 30px!important;
+        padding-top: 8%;
+    }
+    p.h1.text-left {
+        font-size: 20px!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.listafinal {
+        min-height: 0!important;
+        max-width: 98%!important;
+    }
+    img.ranking {
+        width: 16px!important;
+    }
+    i.fas.fa-sign-out-alt.otavio {
+        color: #CB3943;
+        font-size: 50px;
+    }
+    i.fas.fa-sign-out-alt.otavio {
+        color: #CB3943;
+        font-size: 40px;
+        margin-left: 35%;
+    }
+    img.rounded.float-left {
+        margin-left: 15%;
+        min-width: 90px!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.editprofile.otavio {
+        min-height: 80px;
+        font-size: 20px;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.moderator.otavio {
+    font-size: 20px;
+    min-height: 80px;
+    }
+    label.custom-control-label.otavio {
+        font-size: 20px!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.voltar.otavio {
+        min-height: 0!important;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.manage.otavio {
+        min-height: 0;
+        font-size: 20px;
+    }
+    img.imagemscore.jonas {
+        margin-left: -50%;
+    }
+    .col-3.align-self-end.score.jonas {
+        padding-top: 9%!important;
+    }
+    i.fas.fa-check-circle.otavio {
+        font-size: 20px;
+    }
+    p.h1.text-center.otavio {
+        font-size: 15px;
+    }
+    p.h3.text-left.tipoRestaurante.otavio {
+        font-size: 12px!important;
+    }
+    img.roundedl.score.otavio {
+        margin: 41% 0% 0% -20%;
+        max-width: 90px;
+    }
+    p.h4.otavio {
+        font-size: 13px;
+    }
+    button.btn.btn-primary.btn-lg.btn-block.voltar.resultado.otavio.dois {
+        font-size: 30px!important;
+        width: 100%;
+        text-align: center;
+    }
+    h1.nomerestaurante.somatoria {
+        font-size: 20px!important;
+    }
+    h3.moderacao {
+        font-size: 20px;
+    }
+    img.imagemscore.jonas {
+        max-width: 90px;
+    }
+    button.btn.btn-primary.btn-lg.home {
+        min-height: 0!important;
+        border-radius: 50px;
+    }
+    img.imagemcheckescolha {
+        width: 20px;
+        margin-right: 3%;
+    }
+    button.btn.btn-primary.btn-lg.pdf.jonas {
+        width: 100%;
+    }
+
+
+
+
+}
