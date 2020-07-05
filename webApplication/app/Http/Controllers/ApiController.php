@@ -15,7 +15,7 @@ class ApiController extends Controller
         // die;
 
         return view('restaurantes', [
-            'restaurantes' => $restaurantes,
+            'restaurantes' => $restaurantes->object,
             'idTurma' => $id
         ]);
     }
@@ -58,7 +58,7 @@ class ApiController extends Controller
             // var_dump($dados->object);
             // die;
              
-            return $dados->object;
+            return $dados;
 
     }
 
