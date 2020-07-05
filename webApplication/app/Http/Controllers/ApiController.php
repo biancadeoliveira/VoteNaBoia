@@ -14,7 +14,7 @@ class ApiController extends Controller
         // var_dump($restaurantes);
         // die;
 
-        return view('votacaosemanallistarestaurante', [
+        return view('restaurantes', [
             'restaurantes' => $restaurantes,
             'idTurma' => $id
         ]);
