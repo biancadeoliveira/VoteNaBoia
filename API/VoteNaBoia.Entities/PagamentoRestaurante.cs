@@ -16,6 +16,7 @@ namespace VoteNaBoia.Entities
         [Required]
         [Column("ID_Restaurante")]
         public int IDRestaurante { get;  set; }
+
         [ForeignKey("IDRestaurante")]
         public  Restaurante Restaurante { get; set; }
 
