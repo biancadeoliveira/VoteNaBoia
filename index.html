@@ -10,21 +10,24 @@
     <title>VoteNaBoia - API Doc</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-dark bg-dark text-center">
+        <a class="navbar-brand w-100" href="#">
           Vote na Boia - Documentação API
         </a>
     </nav>
-    <section class="container pt-3">
+    <section class="container mt-3 mb-4">
         <div class="col-md-10">
-            <h3>Alunos</h3>
-            <hr/>
-            <div id="alunos">
+            
+            <!-- Rotas Alunos -->
+            <div id="alunos" class="pt-3">
+                <h3>Alunos</h3>
+                <hr/>
+
                 <!-- Alunos POST -->
                 <div class="card">
-                  <div class="card-header" id="headingOne">
+                  <div class="card-header" id="heading_alunos_1">
                     <h5 class="mb-0">
-                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_alunos_1" aria-expanded="false" aria-controls="collapse_alunos_1">
                         <p class="text-left">
                             <span class="badge badge-success">POST</span><br/>
                             <span>https://localhost:44380/api/alunos/</span>
@@ -33,7 +36,7 @@
                     </h5>
                   </div>
               
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#alunos">
+                  <div id="collapse_alunos_1" class="collapse" aria-labelledby="heading_alunos_1" data-parent="#alunos">
                     <div class="card-body">
                       <p>Cadastra um novo aluno ao sistema.</p>
                       <p>O <b>REQUEST</b> deve enviar em formato <b>JSON</b> as seguintes informações:</p>
@@ -59,9 +62,9 @@
 
                 <!-- Alunos GET all-->
                 <div class="card">
-                  <div class="card-header" id="headingTwo">
+                  <div class="card-header" id="heading_alunos_2">
                     <h5 class="mb-0">
-                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_alunos_2" aria-expanded="false" aria-controls="collapse_alunos_2">
                         <p class="text-left">
                             <span class="badge badge-primary">GET</span><br/>
                             <span>https://localhost:44380/api/alunos/</span>
@@ -69,7 +72,7 @@
                       </button>
                     </h5>
                   </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#alunos">
+                  <div id="collapse_alunos_2" class="collapse" aria-labelledby="heading_alunos_2" data-parent="#alunos">
                     <div class="card-body">
                         <p>Busca todos os alunos cadastrados no sistema, independente da turma a qual pertence</p>
                         <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint</p>
@@ -142,7 +145,6 @@
                     </div>
                   </div>
 
-
                 <!-- Alunos UPDATE-->
                 <div class="card">
                   <div class="card-header" id="heading_alunos_4">
@@ -185,8 +187,320 @@
                     </div>
                   </div>
                 </div>
-              </div>
+
+                <!-- Alunos UPDATE SNAtivo-->
+                <div class="card">
+                    <div class="card-header" id="heading_alunos_5">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_alunos_5" aria-expanded="false" aria-controls="collapse_alunos_5">
+                        <p class="text-left">
+                            <span class="badge badge-warning">PUT</span><br/>
+                            <span>https://localhost:44380/api/alunos/{id}/ativo</span>
+                        </p>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapse_alunos_5" class="collapse" aria-labelledby="heading_alunos_5" data-parent="#alunos">
+                        <div class="card-body">
+                            <p>Editar o campo SNAtivo do aluno, ou seja, o status, S = Ativo, N = Inativo</p>
+                            <p>No <b>REQUEST</b> deve enviar em formato JSON as seguintes informações:</p>
+                            <pre class="bg-dark text-light">        
+    {
+        "IDAluno": 2,
+        "SNAtivo": "N"
+    }
+                            </pre>
+                            <p>
+                                <small>
+                                    O Campo IDAluno não pode ser alterado.
+                                    O Campo SNAtivo só aceita 'S' ou 'N'.
+                                </small>
+                            </p>
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": null,
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+
+            <!-- Rotas Restaurantes -->
+            <div id="restaurantes" class="pt-3">
+                <h3>Restaurantes</h3>
+                <hr/>
+            
+                <!-- Restaurante POST -->
+                <div class="card">
+                    <div class="card-header" id="heading_restaurantes_1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_restaurantes_1" aria-expanded="false" aria-controls="collapse_restaurantes_1">
+                        <p class="text-left">
+                            <span class="badge badge-success">POST</span><br/>
+                            <span>https://localhost:44380/api/restaurante/</span>
+                        </p>
+                        </button>
+                    </h5>
+                    </div>
+                
+                    <div id="collapse_restaurantes_1" class="collapse" aria-labelledby="heading_restaurantes_1" data-parent="#restaurantes">
+                        <div class="card-body">
+                            <p>Cadastra um novo restaurante no sistema. Os restaurantes sempre devem estar relacionacionados a uma turma, de forma que para um mesmo retaurante existir em duas turmas, ele deve ser cadastrado para as duas.</p>
+                            <p>O <b>REQUEST</b> deve enviar em formato <b>JSON</b> as seguintes informações:</p>
+                            <pre class="bg-dark text-light">         
+    "idTurma": 1,
+    "nmNome": "Subway",
+    "nmTipo": "Fastfood",
+    "endereco": "Av Principal,123 - Centro",
+    "noTelefone": "1412345678",
+    "link": null,
+    "email": "subway.com",
+    "snAtivo": "S",
+    "pagamentoRestaurante": [
+        {
+            "idFormaPagamento": 1
+        },
+        {
+            "idFormaPagamento": 2
+        },
+        {
+            "idFormaPagamento": 4
+        }
+    ]
+                            </pre>
+                            <p><small>É possivel cadastrar as formas de pagamento do restaurante por essa rota, ou por uma rota especifica de formas de pagamento.</small></p>
+                            
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": null,
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurante GET all-->
+                <div class="card">
+                    <div class="card-header" id="heading_rastaurantes_2">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_restaurantes_2" aria-expanded="false" aria-controls="collapse_restaurantes_2">
+                        <p class="text-left">
+                            <span class="badge badge-primary">GET</span><br/>
+                            <span>https://localhost:44380/api/restaurante/turma/{id}</span>
+                        </p>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapse_restaurantes_2" class="collapse" aria-labelledby="heading_rastaurantes_2" data-parent="#restaurantes">
+                        <div class="card-body">
+                            <p>Busca todos os restaurantes da turma, devemos passar na rota o id da turma</p>
+                            <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint</p>
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": [{}, {}, {} ... {}]
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                            <p>O <b>Object</b> será um conjunto de JSONs, exemplo:</p>
+                            <pre class="bg-dark text-light">        
+    [
+        {
+            "idRestaurante": 7,
+            "idTurma": 1,
+            "nmNome": "Outback",
+            "nmTipo": "Churrascaria",
+            "endereco": "Av Principal,123 - Centro",
+            "noTelefone": "1412345678",
+            "link": null,
+            "email": "outback.com",
+            "snAtivo": "N",
+            "turma": null,
+            "pagamentoRestaurante": [
+                {
+                    "idPagamentoRestaurante": 1,
+                    "idRestaurante": 7,
+                    "idFormaPagamento": 1,
+                    "formaPagamento": {
+                        "idFormaPagamento": 1,
+                        "nmFormaPagamento": "Cartão Crédito"
+                    }
+                },
+                {
+                    "idPagamentoRestaurante": 2,
+                    "idRestaurante": 7,
+                    "idFormaPagamento": 2,
+                    "formaPagamento": {
+                        "idFormaPagamento": 2,
+                        "nmFormaPagamento": "Cartão Débito"
+                    }
+                },
+                {
+                    "idPagamentoRestaurante": 3,
+                    "idRestaurante": 7,
+                    "idFormaPagamento": 4,
+                    "formaPagamento": {
+                        "idFormaPagamento": 4,
+                        "nmFormaPagamento": "Dinheiro"
+                    }
+                }
+            ]
+        }
+    ]
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Restaurante GET one-->
+                <div class="card">
+                    <div class="card-header" id="heading_restaurantes_3">
+                        <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_restaurantes_3" aria-expanded="false" aria-controls="collapse_restaurantes_3">
+                            <p class="text-left">
+                                <span class="badge badge-primary">GET</span>
+                                <span class="badge badge-secondary">Especifico</span><br/>
+                                <span>https://localhost:44380/api/restaurante/{id}</span>
+                            </p>
+                        </button>
+                        </h5>
+                    </div>
+                    <div id="collapse_restaurantes_3" class="collapse" aria-labelledby="heading_restaurantes_3" data-parent="#restaurantes">
+                        <div class="card-body">
+                            <p>Busca um restaurante especifico passando o ID do restaurante na rota</p>
+                            <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint.</p>
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": {}
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                            <p>O <b>Object</b> será um JSON, exemplo:</p>
+                            <pre class="bg-dark text-light">        
+    [
+        {
+            "idRestaurante": 7,
+            "idTurma": 1,
+            "nmNome": "Outback",
+            "nmTipo": "Churrascaria",
+            "endereco": "Av Principal,123 - Centro",
+            "noTelefone": "1412345678",
+            "link": null,
+            "email": "outback.com",
+            "snAtivo": "S",
+            "turma": {
+                "idTurma": 1,
+                "nmTurma": "Pós Engenharia",
+                "cdTurma": 100,
+                "dtCriacao": "2020-06-14T12:04:39.543"
+        },
+        "pagamentoRestaurante": [
+            {
+                "idPagamentoRestaurante": 1,
+                "idRestaurante": 7,
+                "idFormaPagamento": 1,
+                "formaPagamento": {
+                    "idFormaPagamento": 1,
+                    "nmFormaPagamento": "Cartão Crédito"
+                }
+            },
+            {
+                "idPagamentoRestaurante": 2,
+                "idRestaurante": 7,
+                "idFormaPagamento": 2,
+                "formaPagamento": {
+                    "idFormaPagamento": 2,
+                    "nmFormaPagamento": "Cartão Débito"
+                }
+            },
+            {
+                "idPagamentoRestaurante": 3,
+                "idRestaurante": 7,
+                "idFormaPagamento": 4,
+                "formaPagamento": {
+                    "idFormaPagamento": 4,
+                    "nmFormaPagamento": "Dinheiro"
+                }
+            }
+        ]
+    ]   
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurante UPDATE SNAtivo-->
+                <div class="card">
+                    <div class="card-header" id="heading_restaurantes_4">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_restaurantes_4" aria-expanded="false" aria-controls="collapse_restaurantes_4">
+                        <p class="text-left">
+                            <span class="badge badge-warning">PUT</span><br/>
+                            <span>https://localhost:44380/api/restaurante/{id}/update/ativo</span>
+                        </p>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapse_restaurantes_4" class="collapse" aria-labelledby="heading_restaurantes_4" data-parent="#restaurantes">
+                        <div class="card-body">
+                            <p>Editar o campo SNAtivo do restaurante, ou seja, o status, S = Ativo, N = Inativo</p>
+                            <p>No <b>REQUEST</b> deve enviar em formato JSON as seguintes informações:</p>
+                            <pre class="bg-dark text-light">        
+    {
+        "idRestaurante": 7,
+        "snAtivo": "N"
+    }
+                            </pre>
+                            <p>
+                                <small>
+                                    O Campo idRestaurante não pode ser alterado.
+                                    O Campo snAtivo só aceita 'S' ou 'N'.
+                                </small>
+                            </p>
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": null,
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <footer class="container-fluid bg-dark text-light p-3">
+        <div class="row text-center">
+            <div class="col-12 col-md-4">
+                <h5>Vote na Boia</h5>
+                <p><small>Projeto da Turma de Engenharia de Software <br/> Unisagrado Bauru</small></p>
+                <p><small>Arquitetura de Sistemas <br/> Professor: Enedy</small></p>
+            </div>
+            <div class="col-12 col-md-4">
+                <h5>Equipe</h5>
+                <p>
+                    <small>
+                        Bianca Souza de Oliveira, 
+                        Hellen Souza de Oliveira,
+                        Hugo Souza de Oliveira,
+                        Jonas Souza de Oliveira,
+                        Marli Souza de Oliveira,
+                        Otávio Souza de Oliveira
+                    </small>
+                </p>
+            </div>
+            <div class="col-12 col-md-4">
+                
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
