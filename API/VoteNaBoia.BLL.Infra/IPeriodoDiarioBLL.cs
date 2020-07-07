@@ -10,7 +10,7 @@ namespace VoteNaBoia.BLL.Infra
     {
         Task<PeriodoDiario> GetUltimoPeriodoDiarioAsync(int IDPeriodo);
         Task AbrirPeriodoDiario(int IDTurma);
-        Task FecharPeriodoDiario(int IDTurma);
+        void FecharPeriodoDiario(PeriodoDiario periodoDiario);
         Task<bool> IsPeriodoAbertoAsync(int IDPeriodoDiario);
     }
 }
