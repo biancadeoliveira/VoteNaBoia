@@ -34,11 +34,6 @@
                             <td class="text-center">{{$r->endereco}}</td>
                             <td class="text-center">{{$r->snAtivo}}</td>
                             
-                            <!--<td> @foreach($r->pagamentoRestaurante as $p)
-                                <p> {{$p->nmTipo}}
-                                 @endforeach
-                            </td>-->
-                            
                         </tr>
                         @endforeach
                     </tbody>

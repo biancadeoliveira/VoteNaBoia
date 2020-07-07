@@ -20,6 +20,7 @@ Route::get('/', function () { // ok
 Route::get('/login', function () { // ok
     return view('login');
 });
+Route::post('/login', 'ApiController@fazerLogin')->name('login');
 
 Route::get('/cadastro', function () { // ok
     return view('cadastro');
@@ -43,7 +44,7 @@ Route::get('/configuracoesmoderador', function () { // ok
 
 Route::get('/confirmacaovotacaodiaria', function () { // ok
     return view('confirmacaovotacaodiaria');
-});
+})->name('confirmacaovotacaodiaria');
 
 Route::get('/loginsucess', function () { //ok
     return view('loginsucess');
@@ -51,23 +52,36 @@ Route::get('/loginsucess', function () { //ok
 
 Route::get('/menuprincipal', function () { // ok
     return view('menuprincipal');
-});
+})->name('menuprincipal');
 
 Route::get('/resultados', function () { // ok
     return view('resultados');
-});
+})->name('resultados');
 
 Route::get('/resultadosum', function () { // ok
     return view('resultadosum');
 });
 
+Route::get('/resultadovotacaodiaria', function () { // ok
+    return view('resultadovotacaodiaria');
+});
+
+Route::get('/resultadovotacaodiaria/{idTurma}', 'ApiController@resultadoVotacaoDiaria')->name('resultadovotacaodiaria');
+
 Route::get('/votacaodiaria', function () { // ok
     return view('votacaodiaria');
 });
+Route::get('/votacaodiaria/{idTurma}', 'ApiController@listarRestaurantesVotoDiario')->name('restaurantesVotoDiario');
+
+//Route::get('/votoVotoDiario/{idRestaurante}/{idTurma}/{idAluno}', 'ApiController@votoVotoDiario')->name('votoVotoDiario');
 
 Route::get('/votacaodiariavisualizacaoescolha', function () { // ok
     return view('votacaodiariavisualizacaoescolha');
 });
+
+Route::get('/votacaodiariavisualizacaoescolha/{idRestaurante}', 'ApiController@visualizaEscolhaVotoDiario')->name('visualizaEscolhaVotoDiario');
+
+Route::get('/confirmaVotoDiario/{idTurma}/{idAluno}/{idRestaurante}', 'ApiController@confirmaVotoDiario')->name('confirmaVotoDiario');
 
 Route::get('/votacaosemanal', function () { //ok
     return view('votacaosemanal');

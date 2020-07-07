@@ -87,4 +87,92 @@ class ApiController extends Controller
           //echo '<pre>';
           //print_r($response);
     }
+
+    public function fazerLogin(Request $request){
+        $dados = $request->except(['_token']);
+        $email = $dados['imputEmailLogin'];
+        $senha = $dados['ImputSenhaLogin'];
+
+       $url = "https://localhost:44380/api/login/".$email."/".$senha;
+       
+        $aluno = $this->getAll($url);
+
+        if($aluno->object!=null){
+            $request->session()->put('idAluno',$aluno->object->idAluno);
+            $request->session()->put('nmAluno',$aluno->object->nmAluno);
+            return redirect()->route('menuprincipal');
+        }
+        else
+        {
+            return redirect()->route('login')->with('msg', $aluno->message);
+        }
+    }
+
+    public function listarRestaurantesVotoDiario($idTurma){
+        $restaurantes = $this->getAll("https://localhost:44380/api/votodiario/" . $idTurma);
+
+
+        
+
+        if($restaurantes->object!=null){
+            return view('votacaodiaria', [
+                'restaurantes' => $restaurantes->object,
+                'idTurma' => $idTurma
+            ]);
+        }
+        else
+        {
+            return redirect()->route('menuprincipal')->with('msg', $restaurantes->message);
+        }
+    }
+
+    public function visualizaEscolhaVotoDiario($idRestaurante){
+        $restaurante = $this->getAll("https://localhost:44380/api/restaurante/" . $idRestaurante);
+
+        if($restaurante->object!=null){
+            return view('votacaodiariavisualizacaoescolha', [
+                'restaurante' => $restaurante->object
+            ]);
+        }
+        else
+        {
+            return redirect()->route('menuprincipal')->with('msg', $restaurante->message);
+        }
+    }
+
+    public function confirmaVotoDiario($idTurma,$idAluno,$idRestaurante){
+        $dados = [
+            'idRestaurante'=> $idRestaurante,
+            'idTurma'=>$idTurma,
+            'idAluno'=>$idAluno
+        ];
+        
+        $url = "https://localhost:44380/api/votodiario";
+        $ret = json_decode($this->requisicao($dados, $url));
+
+        if($ret->message=='Voto cadastrado com sucesso!')
+        {
+            return redirect()->route('confirmacaovotacaodiaria')->with('msg', $ret->message);
+        }
+        else
+        {
+            return redirect()->route('menuprincipal')->with('msg', $ret->message);
+        }
+    }
+
+    public function resultadoVotacaoDiaria($idTurma){
+        $restaurante = $this->getAll("https://localhost:44380/api/votodiario/resultado/" . $idTurma);
+
+        if($restaurante->object!=null){
+            return view('resultadovotacaodiaria', [
+                'restaurante' => $restaurante->object
+            ]);
+        }
+        else
+        {
+            return redirect()->route('menuprincipal')->with('msg', $restaurante->message);
+        }
+    }
+    
+    
 }

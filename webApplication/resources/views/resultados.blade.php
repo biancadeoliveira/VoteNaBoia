@@ -7,7 +7,7 @@
     <h1 class="resultados">Resultados</h1>
         <div class="row align-items-center">
             <div class="col">
-                <button type="button" class="btn btn-primary btn-lg btn-block resultado s">Resultado Votação Diária<br><i class="fas fa-calendar-day"></i></button>
+                <button type="button" class="btn btn-primary btn-lg btn-block resultado s"><a href="{{ route('resultadovotacaodiaria',1) }}">Resultado Votação Diária</a><br><i class="fas fa-calendar-day"></i></button>
             </div>
             <div class="col">
                 <button type="button" class="btn btn-primary btn-lg btn-block resultado s">Resultado Votação Seamanal<br><i class="fas fa-calendar-week"></i></button>

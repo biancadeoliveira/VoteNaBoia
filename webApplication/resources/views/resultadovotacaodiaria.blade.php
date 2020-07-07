@@ -5,7 +5,7 @@
 {{-- Aqui começa o html--}}
 
 <div class="container">
-	<h1 class="resultados">Votação Diária</h1>
+	<h1 class="resultados">Resultado Votação Diária</h1>
 	<h6> </h6>
 	<div class="rounded principalvotacao">
 		<div class="row">
@@ -33,17 +33,13 @@
 				<br>
 				<br>
 			</div>
+			<p class="descricao">Total de Votos:10</p>
 		</div>
-		<div>
-			<p class="descricao confirmacao">Você gostaria de comer neste Restaurante?</p>
-		</div>
+		
 		<div class="principalvotacao">
 			<div class="row">
 				<div class="col">
 					<button type="button" class="btn btn-primary btn-lg btn-block voltar jonas"><i class="fas fa-door-open"></i><a href="{{ url()->previous() }}">Voltar</a></i></button>
-				</div>
-				<div class="col">
-					<button type="button" class="btn btn-primary btn-lg btn-block confirmar jonas"><i class="fas fa-check"></i><a href="{{route('confirmaVotoDiario',['idTurma'=>1,'idAluno'=>Session::get('idAluno'),'idRestaurante'=>$restaurante->idRestaurante])}}">CONFIRMAR</a></button>
 				</div>
 			</div>
 			<footer >

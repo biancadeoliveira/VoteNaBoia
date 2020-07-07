@@ -8,6 +8,11 @@
 
 <div class="container">
 	<h1 class="resultados">Votação Diária</h1>
+	@if (Session::has('msg'))
+        <div class="col-md-12">
+        <div class="alert alert-primary">{{Session::get('msg')}}</div>
+        </div>
+    @endif
 	<h6> </h6>
 	<div class="rounded principalvotacao">
 		<div class="row">
