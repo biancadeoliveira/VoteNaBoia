@@ -480,6 +480,52 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Rotas Formas Pagamento -->
+            <div id="formas_pagamento" class="pt-3">
+                <h4>Endpoint Formas Pagamento</h4>
+                <hr/>
+            
+                <!-- Formas Pagamento GET all-->
+                <div class="card">
+                    <div class="card-header" id="heading_formas_pagamento_1">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_formas_pagamento_1" aria-expanded="false" aria-controls="collapse_formas_pagamento_1">
+                        <p class="text-left">
+                            <span class="badge badge-primary">GET</span><br/>
+                            <span>formapagamento/</span>
+                        </p>
+                        </button>
+                    </h5>
+                    </div>
+                    <div id="collapse_formas_pagamento_1" class="collapse" aria-labelledby="heading_formas_pagamento_1" data-parent="#formas_pagamento">
+                        <div class="card-body">
+                            <p>Busca todas as formas de pagamento cadastradas no sistema, as formas de pagamento são independente das turmas.</p>
+                            <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint</p>
+                            <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                            <pre class="bg-dark text-light">         
+    "object": [{}, {}, {} ... {}]
+    "message": "",
+    "skip": 0,
+    "take": 0
+                            </pre>
+                            <p>O <b>Object</b> será um conjunto de JSONs, exemplo:</p>
+                            <pre class="bg-dark text-light">        
+    [
+        {
+            "idFormaPagamento": 1,
+            "nmFormaPagamento": "Cartão Crédito"
+        },
+        {
+            "idFormaPagamento": 2,
+            "nmFormaPagamento": "Cartão Débito"
+        }
+    ]
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <footer class="container-fluid bg-dark text-light p-3">
@@ -494,11 +540,11 @@
                 <p>
                     <small>
                         Bianca Souza de Oliveira, 
-                        Hellen Souza de Oliveira,
-                        Hugo Souza de Oliveira,
-                        Jonas Souza de Oliveira,
-                        Marli Souza de Oliveira,
-                        Otávio Souza de Oliveira
+                        Hellen Gouveia,
+                        Hugo,
+                        Jonas,
+                        Marli Mieko Terada,
+                        Otávio
                     </small>
                 </p>
             </div>
