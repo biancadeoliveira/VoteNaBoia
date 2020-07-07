@@ -36,15 +36,24 @@ namespace VoteNaBoia.BLL
 
         public async Task<Restaurante> GetResultadoVotoDiarioAsync(int idTurma) //// resultado da votação
         {
-         //   var turmaAluno = await _turmaAlunoBLL.GetTurmaAlunoAsync(idAluno, idTurma); //pega idTurmaAluno
+            
+            //   var turmaAluno = await _turmaAlunoBLL.GetTurmaAlunoAsync(idAluno, idTurma); //pega idTurmaAluno
             var ultimoPeriodoTurma = await _periodoBLL.GetUltimoPeriodoAsync(idTurma); // pega idPeriodo
             var periodoDiario =await  _periodoDiarioBLL.GetUltimoPeriodoDiarioAsync(ultimoPeriodoTurma.IDPeriodo);
-            var idPeriodoResultado =   _votoDiarioRepository.GetResultadoVotoDiarioAsync(periodoDiario.IDPeriodoDiario);
-            var periodoResultado = await _periodoResultadoBLL.GetPeriodo(idPeriodoResultado);
+            await _periodoDiarioBLL.FecharPeriodoDiario(ultimoPeriodoTurma.IDPeriodo);//fecha o período
+            if (await _periodoDiarioBLL.IsPeriodoAbertoAsync(periodoDiario.IDPeriodoDiario))
+            {
+                var msg = "O periodo de votação ainda está aberto";
+                throw new Exception(msg);
+            }
+            else
+            {
+                var idPeriodoResultado = _votoDiarioRepository.GetResultadoVotoDiarioAsync(periodoDiario.IDPeriodoDiario);
+                var periodoResultado = await _periodoResultadoBLL.GetPeriodo(idPeriodoResultado);
 
-            await _periodoResultadoBLL.UpdateSNVisitado(periodoResultado.IDPeriodoResultado);
-            return await _restauranteBLL.GetRestauranteByIdAsync(periodoResultado.IDRestaurante); // restaurante
-            
+                await _periodoResultadoBLL.UpdateSNVisitado(periodoResultado.IDPeriodoResultado);
+                return await _restauranteBLL.GetRestauranteByIdAsync(periodoResultado.IDRestaurante); // restaurante
+            }
 
         }
 
@@ -56,6 +65,7 @@ namespace VoteNaBoia.BLL
 
             if (await _periodoBLL.IsPeriodoAbertoAsync(ultimoPeriodoTurma.IDPeriodo)) //valida se período está aberto
             {
+
                 await _periodoDiarioBLL.AbrirPeriodoDiario(ultimoPeriodoTurma.IDPeriodo);
 
                 //idTurmaAluno idPeriodoResultado (id rest + id_periodo) // pegar o periodo resultado
@@ -94,7 +104,7 @@ namespace VoteNaBoia.BLL
             }
             else
             {
-                msg = "Período de votação semanal ainda está aberto";
+                msg = "Período de votação semanal já encerrado";
                 throw new Exception(msg);
             }
            
@@ -103,19 +113,28 @@ namespace VoteNaBoia.BLL
 
         public async Task<List<Restaurante>> GetVotoDiarioRestaurantesAsync(int idTurma) // pega restaurantes disponíveis para votação
         {
+            var msg = "";
             List<Restaurante> restaurantes;
             restaurantes = new List<Restaurante>();
             var periodo = await _periodoBLL.GetUltimoPeriodoAsync(idTurma);//pega o último período da turma iniformada
             if (await _periodoBLL.IsPeriodoAbertoAsync(periodo.IDPeriodo)) {// testa se o último período está aberto
                 var resultados = await _periodoResultadoBLL.GetAllRestaurantesNVisitadosAsync(periodo.IDPeriodo);//pega os restaurantes não visitados
-                foreach(var resultado in resultados) //percorre cada resultado para pegar os dados do restaurante
-                { //adiciona o restaurante numa lista
-                    restaurantes.Add(await _restauranteBLL.GetRestauranteByIdAsync(resultado.IDRestaurante));
+                if (resultados.Count > 0)
+                {
+                    foreach (var resultado in resultados) //percorre cada resultado para pegar os dados do restaurante
+                    { //adiciona o restaurante numa lista
+                        restaurantes.Add(await _restauranteBLL.GetRestauranteByIdAsync(resultado.IDRestaurante));
+                    }
+                }
+                else
+                {
+                    msg = "Não existem restaurantes disponíveis";
+                    throw new Exception(msg);
                 }
             }
             else
             {
-                var msg = "Não existe período aberto para votação";
+                msg = "Não existe período aberto para votação";
                 throw new Exception(msg);
             }
             return restaurantes; // retorna a lista de restaurantes

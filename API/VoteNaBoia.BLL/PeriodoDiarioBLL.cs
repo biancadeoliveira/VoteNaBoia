@@ -13,6 +13,10 @@ namespace VoteNaBoia.BLL
         private readonly IPeriodoDiarioRepository _periodoDiarioRepository;
         private readonly IPeriodoBLL _periodoBLL;
         private readonly ITurmaConfiguracaoBLL _turmaConfiguracaoBLL;
+        DateTime dhInsert = DateTime.Now;
+        DateTime dhInicioDefault = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);// data inicio é o dia(hoje) 7:00
+        DateTime dhFimDefault = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 00, 30, 59);// data fim é o dia(hoje) 11:00
+
         public PeriodoDiarioBLL(IPeriodoDiarioRepository periodoDiarioRepository, IPeriodoBLL periodoBLL, ITurmaConfiguracaoBLL turmaConfiguracaoBLL)
         {
             _periodoDiarioRepository = periodoDiarioRepository;
@@ -28,30 +32,45 @@ namespace VoteNaBoia.BLL
         public async Task AbrirPeriodoDiario(int IDPeriodo)
         {
             var msg = "";
-            DateTime dhInsert = DateTime.Now;
-            DateTime dhInicioDefault = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,7,0,0);// data inicio é o dia(hoje) 7:00
-            DateTime dhFimDefault = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 30, 59);// data fim é o dia(hoje) 11:00
             var periodo = await _periodoBLL.GetPeriodoAsync(IDPeriodo);
 
 
             if (await _periodoBLL.IsPeriodoAbertoAsync(IDPeriodo)) 
             {
                 var periodoDiarioAtual = await this.GetUltimoPeriodoDiarioAsync(IDPeriodo);
-                if(await this.IsPeriodoAbertoAsync(periodoDiarioAtual.IDPeriodoDiario)) //teste se periodo diário atual está aberto
+                if (periodoDiarioAtual != null)
                 {
-                 
-                    // testa se dhInsert é maior que o início e menor que o fim
-                    if (dhInsert.CompareTo(dhInicioDefault) ==1 && dhInsert.CompareTo(dhFimDefault) ==-1)
+                    if (await this.IsPeriodoAbertoAsync(periodoDiarioAtual.IDPeriodoDiario)) //teste se periodo diário atual está aberto
                     {
-                        //não faz nada, está dentro do período - não precisa abrir nem fechar
+
+                        // testa se dhInsert é maior que o início e menor que o fim
+                        if (this.AgoraIsDentroPeriodoDeVotacao())
+                        {
+                            //não faz nada, está dentro do período - não precisa abrir nem fechar
+                        }
+                        else
+                        {
+                            //se a data de inicio do periodo atual for menor que a data de inserção, aí abre novo período, senão, indica que é o mesmo dia, não pode abrir votação
+                            if (periodoDiarioAtual.DHInicio.CompareTo(dhInsert) == -1 && dhInsert.CompareTo(dhInicioDefault) == 1 && dhInsert.CompareTo(dhFimDefault) == -1)
+                            {
+                                await this.FecharPeriodoDiario(periodoDiarioAtual.IDPeriodo);//fecha o período atual
+                                var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: DateTime.Today, 'S');
+
+                                _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
+                                await _periodoDiarioRepository.UnitOfWork.Commit();
+                            }
+                            else
+                            {
+                                msg = "Ainda não pode ser aberto um novo período para votação";
+                                throw new Exception(msg);
+                            }
+                        }
                     }
                     else
                     {
-                        this.FecharPeriodoDiario(periodoDiarioAtual); //fecha o período atual
-                        //se a data de inicio do periodo atual for menor que a data de inserção, aí abre novo período, senão, indica que é o mesmo dia, não pode abrir votação
-                        if (periodoDiarioAtual.DHInicio.Date.CompareTo(dhInsert.Date) == -1)
+                        //se a data de inicio do periodo atual for menor que a data de inserção, aí fecha o período e abre, senão, indica que é o mesmo dia, não pode abrir votação
+                        if (periodoDiarioAtual.DHInicio.CompareTo(dhInsert) == -1 && dhInsert.CompareTo(dhInicioDefault) == 1 && dhInsert.CompareTo(dhFimDefault) == -1)
                         {
-                            /* var dhFimNovoPeriodoDiario = new DateTime();*/
                             var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: DateTime.Today, 'S');
 
                             _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
@@ -66,30 +85,30 @@ namespace VoteNaBoia.BLL
                 }
                 else
                 {
-                    //se a data de inicio do periodo atual for menor que a data de inserção, aí fecha o período e abre, senão, indica que é o mesmo dia, não pode abrir votação
-                    if (periodoDiarioAtual.DHInicio.CompareTo(dhInsert) == -1 && dhInsert.CompareTo(dhInicioDefault) == 1 && dhInsert.CompareTo(dhFimDefault) == -1)
-                    {
-                        var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: DateTime.Today, 'S');
+                    var periodoDiario = new PeriodoDiario(IDPeriodoDiario: 0, IDPeriodo: IDPeriodo, DHInicio: DateTime.Today, DHFim: DateTime.Today, 'S');
 
-                        _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
-                        await _periodoDiarioRepository.UnitOfWork.Commit();
-                    }
-                    else
-                    {
-                        msg = "Ainda não pode ser aberto um novo período para votação";
-                        throw new Exception(msg);
-                    }
+                                _periodoDiarioRepository.AbrirPeriodo(periodoDiario);
+                                await _periodoDiarioRepository.UnitOfWork.Commit();
                 }
             }
 
            
         }
 
-        public  void FecharPeriodoDiario(PeriodoDiario periodoDiario)
+        public async Task FecharPeriodoDiario(int idPeriodo)
         {
-            periodoDiario.DHFim = DateTime.Now;
-            periodoDiario.SNAtivo = 'N';
-            _periodoDiarioRepository.FecharPeriodo(periodoDiario);
+            var periodoDiarioAnterior = await _periodoDiarioRepository.GetUltimoPeriodoAsync(idPeriodo);
+
+            if (periodoDiarioAnterior != null)
+            {
+                if ((await this.IsPeriodoAbertoAsync(periodoDiarioAnterior.IDPeriodoDiario))&&(! this.AgoraIsDentroPeriodoDeVotacao()))
+                {
+                    periodoDiarioAnterior.DHFim = DateTime.Now;
+                    periodoDiarioAnterior.SNAtivo = 'N';
+                    _periodoDiarioRepository.FecharPeriodo(periodoDiarioAnterior);
+                }
+            }
+            
              
         }
 
@@ -102,6 +121,18 @@ namespace VoteNaBoia.BLL
         public async Task<bool> IsPeriodoAbertoAsync(int IDPeriodoDiario)
         {
             return await _periodoDiarioRepository.IsPeriodoAbertoAsync(IDPeriodoDiario);
+        }
+
+        public bool AgoraIsDentroPeriodoDeVotacao()
+        {
+            if(dhInsert.CompareTo(dhInicioDefault) == 1 && dhInsert.CompareTo(dhFimDefault) == -1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
