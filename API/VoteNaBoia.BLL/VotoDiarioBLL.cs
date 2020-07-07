@@ -39,7 +39,7 @@ namespace VoteNaBoia.BLL
          //   var turmaAluno = await _turmaAlunoBLL.GetTurmaAlunoAsync(idAluno, idTurma); //pega idTurmaAluno
             var ultimoPeriodoTurma = await _periodoBLL.GetUltimoPeriodoAsync(idTurma); // pega idPeriodo
             var periodoDiario =await  _periodoDiarioBLL.GetUltimoPeriodoDiarioAsync(ultimoPeriodoTurma.IDPeriodo);
-            var idPeriodoResultado =   _votoDiarioRepository.GetResultadoVotoDiarioAsync(periodoDiario.IDPeriodo);
+            var idPeriodoResultado =   _votoDiarioRepository.GetResultadoVotoDiarioAsync(periodoDiario.IDPeriodoDiario);
             var periodoResultado = await _periodoResultadoBLL.GetPeriodo(idPeriodoResultado);
 
             await _periodoResultadoBLL.UpdateSNVisitado(periodoResultado.IDPeriodoResultado);
