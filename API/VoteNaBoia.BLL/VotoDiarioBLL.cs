@@ -37,7 +37,6 @@ namespace VoteNaBoia.BLL
         public async Task<Restaurante> GetResultadoVotoDiarioAsync(int idTurma) //// resultado da votação
         {
             
-            //   var turmaAluno = await _turmaAlunoBLL.GetTurmaAlunoAsync(idAluno, idTurma); //pega idTurmaAluno
             var ultimoPeriodoTurma = await _periodoBLL.GetUltimoPeriodoAsync(idTurma); // pega idPeriodo
             var periodoDiario =await  _periodoDiarioBLL.GetUltimoPeriodoDiarioAsync(ultimoPeriodoTurma.IDPeriodo);
             await _periodoDiarioBLL.FecharPeriodoDiario(ultimoPeriodoTurma.IDPeriodo);//fecha o período
