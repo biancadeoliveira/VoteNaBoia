@@ -11,5 +11,6 @@ namespace VoteNaBoia.Entities.DTO
         public DateTime DHInicio { get; set; }
         public DateTime DHFim { get; set; }
         public char SNAtivo { get; set; }
+        public char SNProcessado { get; set; }
     }
 }

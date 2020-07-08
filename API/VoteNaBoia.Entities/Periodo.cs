@@ -29,16 +29,21 @@ namespace VoteNaBoia.Entities
         [Required]
         [Column("SN_Ativo", TypeName = "char(1)")]
         public char SNAtivo { get; set; }
-    
+
+        [Required]
+        [Column("SN_Processado", TypeName = "char(1)")]
+        public char SNProcessado { get; set; }
+
         public Periodo() { }
 
-        public Periodo(int IDPeriodo, int IDTurma, DateTime DHInicio, DateTime DHFim, char SNAtivo)
+        public Periodo(int IDPeriodo, int IDTurma, DateTime DHInicio, DateTime DHFim, char SNAtivo, char SNProcessado)
         {
             this.IDPeriodo = IDPeriodo;
             this.IDTurma = IDTurma;
             this.DHInicio = DHInicio;
             this.DHFim = DHFim;
             this.SNAtivo = SNAtivo;
+            this.SNProcessado = SNProcessado;
         }
 
     }

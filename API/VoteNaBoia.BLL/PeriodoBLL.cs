@@ -32,6 +32,7 @@ namespace VoteNaBoia.BLL
             periodo.DHInicio = DateTime.Now;
             periodo.DHFim = DateTime.Parse("3000-12-01");
             periodo.SNAtivo = 'S';
+            periodo.SNProcessado = 'N';
 
             _periodoRepository.AbrirPeriodo(periodo);
             await _periodoRepository.UnitOfWork.Commit();
@@ -48,6 +49,7 @@ namespace VoteNaBoia.BLL
                     periodoAnterior.DHFim = DateTime.Now;
                     periodoAnterior.SNAtivo = 'N';
                     _periodoRepository.FecharPeriodo(periodoAnterior);
+                    await _periodoRepository.UnitOfWork.Commit();
                 }
             }
         }
