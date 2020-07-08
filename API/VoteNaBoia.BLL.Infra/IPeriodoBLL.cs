@@ -14,5 +14,6 @@ namespace VoteNaBoia.BLL.Infra
         Task AbrirPeriodo(int IDTurma);
         Task FecharPeriodo(int IDTurma);
         Task<bool> IsPeriodoAbertoAsync(int IDPeriodo);
+        Task UpdatePeriodoAsync(Periodo periodo);
     }
 }

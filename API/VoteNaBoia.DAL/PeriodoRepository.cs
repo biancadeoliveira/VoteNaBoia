@@ -31,7 +31,7 @@ namespace VoteNaBoia.DAL
             _dbContext.Periodo.Add(periodo);
         }
 
-        public void FecharPeriodo(Periodo periodo)
+        public void UpdatePeriodo(Periodo periodo)
         {
             bool isDetached = _dbContext.Entry(periodo).State == EntityState.Detached;
             if (isDetached)

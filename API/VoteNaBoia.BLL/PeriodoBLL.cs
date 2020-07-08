@@ -48,7 +48,7 @@ namespace VoteNaBoia.BLL
                 {
                     periodoAnterior.DHFim = DateTime.Now;
                     periodoAnterior.SNAtivo = 'N';
-                    _periodoRepository.FecharPeriodo(periodoAnterior);
+                    _periodoRepository.UpdatePeriodo(periodoAnterior);
                     await _periodoRepository.UnitOfWork.Commit();
                 }
             }
@@ -84,6 +84,12 @@ namespace VoteNaBoia.BLL
         public async Task<Periodo> GetPeriodoAsync(int IDPeriodo)
         {
             return await _periodoRepository.GetPeriodoAsync(IDPeriodo);
+        }
+
+        public async Task UpdatePeriodoAsync(Periodo periodo)
+        {
+            _periodoRepository.UpdatePeriodo(periodo);
+            await _periodoRepository.UnitOfWork.Commit();
         }
     }
 }
