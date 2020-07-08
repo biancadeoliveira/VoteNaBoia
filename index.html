@@ -855,7 +855,117 @@
               
             </div>
         
-         
+            <!-- Rotas Voto Semanal -->
+            <div id="voto_semanal" class="pt-3">
+                <h4>Endpoint Voto Semanal</h4>
+                <hr/>
+
+                <!-- Voto Semanal POST -->
+                <div class="card">
+                    <div class="card-header" id="heading_voto_semanal_1">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_voto_semanal_1" aria-expanded="false" aria-controls="collapse_voto_semanal_1">
+                          <p class="text-left">
+                              <span class="badge badge-success">POST</span><br/>
+                              <span>votosemanal</span>
+                          </p>
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapse_voto_semanal_1" class="collapse" aria-labelledby="heading_voto_semanal_1" data-parent="#voto_semanal">
+                      <div class="card-body">
+                          <p>Insere um novo voto para o aluno no periodo da turma.</p>
+                          <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint.</p>
+                          <p>
+                              <small><b>Validações:</b></small><br/>
+                              <small>1 - O Aluno pode votar em n restaurantes, sendo n a quantidade de dias que terá votação na semana (de segunda a sexta), conforme configurado nas configurações da turma.</small><br/>
+                              <small>2 - Só aceitam novos votos periodos que estão abertos (SNAtivo = 'S') e não processados (SNProcessado = 'N')</small><br/>
+                              <small>3 - O Aluno não pode votar mais de uma vez no mesmo restaurante no mesmo periodo semanal</small>
+                          </p>
+                          <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                          <pre class="bg-dark text-light">         
+      "object": null,
+      "message": "",
+      "skip": 0,
+      "take": 0
+                          </pre>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- Voto Semanal GET votação aluno-->
+                <div class="card">
+                  <div class="card-header" id="heading_voto_semanal_2">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_voto_semanal_2" aria-expanded="false" aria-controls="collapse_periodo_semanal_2">
+                        <p class="text-left">
+                            <span class="badge badge-primary">GET</span><br/>
+                            <span>votosemanal/{idPeriodo}/{idTurmaAluno}/</span>
+                        </p>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapse_voto_semanal_2" class="collapse" aria-labelledby="heading_voto_semanal_2" data-parent="#voto_semanal">
+                    <div class="card-body">
+                        <p>Busca todos os votos do aluno no periodo da turma indiicado</p>
+                        <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {idPeriodo} o periodo que deseja buscar as votações e o no {idTurmaAluno} o id que representa o vinculo entre aluno e turma.</p>
+                        <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                        <pre class="bg-dark text-light">         
+      "object": [{}, {}, {} ... {}]
+      "message": "",
+      "skip": 0,
+      "take": 0
+                        </pre>
+                        <p>O <b>Object</b> será um conjunto de JSONs, exemplo:</p>
+                        <pre class="bg-dark text-light">        
+    [
+        {
+            "idVotoSemanal": 7,
+            "idRestaurante": 2,
+            "idPeriodo": 4,
+            "idTurmaAluno": 5,
+            "dhInclusao": "2020-06-28T23:29:06.573"
+        }
+    ]
+    
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Periodo Semanal Fechar-->
+                <div class="card">
+                  <div class="card-header" id="heading_voto_semanal_3">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_voto_semanal_3" aria-expanded="false" aria-controls="collapse_voto_semanal_3">
+                        <p class="text-left">
+                            <span class="badge badge-success">POST</span><br/>
+                            <span>/votosemanal/processar/{IDPeriodo}/</span>
+                        </p>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapse_voto_semanal_3" class="collapse" aria-labelledby="heading_voto_semanal_3" data-parent="#voto_semanal">
+                    <div class="card-body">
+                        <p>Processa os votos semanais do periodo passado pelo ID.</p>
+                        <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {IDPeriodo} o id da periodo a ser processado.</p>
+                        <p>
+                            <small><b>Validações:</b></small><br/>
+                            <small>1 - O Período necessita ter o campo SNProcessado = 'N' para contabilizar os votos da semana.</small><br/>
+                            <small>2 - O Período só será computado uma vez, e terá o SNProcessado alterado para 'S'.</small>
+                        </p>
+                        <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                        <pre class="bg-dark text-light">         
+    "object": null,
+    "message": "",
+    "skip": 0,
+    "take": 0
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
         </div>
     </section>
     <footer class="container-fluid bg-dark text-light p-3">
