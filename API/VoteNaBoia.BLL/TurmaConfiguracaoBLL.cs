@@ -42,5 +42,41 @@ namespace VoteNaBoia.BLL
 
             return true;
         }
+
+        public async Task<int> GetQtdVotacaoSemanal(int IDTurma)
+        {
+            var qtd = 0;
+
+            var turma = await _turmaConfiguracaoRepository.GetTurmaConfiguracaoAsync(IDTurma);
+
+            if(turma.SNSegunda.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+
+            if (turma.SNTerca.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+            
+            if (turma.SNQuarta.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+            if (turma.SNQuinta.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+            if (turma.SNSexta.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+            if (turma.SNSabado.Equals('S'))
+            {
+                qtd = qtd + 1;
+            }
+
+            return qtd;
+        }
     }
 }

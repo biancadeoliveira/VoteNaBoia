@@ -47,20 +47,20 @@ namespace VoteNaBoia.Entities
 
         [Required]
         [Column("DH_Inicio_VT_Semanal")]
-        public DateTime DHInicioVTSemanal { get; set; }
+        public TimeSpan DHInicioVTSemanal { get; set; }
         [Required]
         [Column("DH_Termino_VT_Semanal")]
-        public DateTime DHTerminoVTSemanal { get; set; }
+        public TimeSpan DHTerminoVTSemanal { get; set; }
         [Required]
         [Column("DH_Inicio_VT_Diaria")]
-        public DateTime DHInicioVTDiaria { get; set; }
+        public TimeSpan DHInicioVTDiaria { get; set; }
         [Required]
         [Column("DH_Termino_VT_Diaria")]
-        public DateTime DHTerminoVTDiaria { get; set; }
+        public TimeSpan DHTerminoVTDiaria { get; set; }
 
         protected TurmaConfiguracao() { }
 
-        public TurmaConfiguracao(int idTurmaConfig, int idTurma, char snSegunda, char snTerca, char snQuarta, char snQuinta, char snSexta, char snSabado, int noRestauranteDescVTSemanal, int noDiaVTSemanal, DateTime dhInicioVTSemanal, DateTime dhTerminoVTSemanal, DateTime dhInicioVTDiaria, DateTime dhTerminoVTDiaria)
+        public TurmaConfiguracao(int idTurmaConfig, int idTurma, char snSegunda, char snTerca, char snQuarta, char snQuinta, char snSexta, char snSabado, int noRestauranteDescVTSemanal, int noDiaVTSemanal, TimeSpan dhInicioVTSemanal, TimeSpan dhTerminoVTSemanal, TimeSpan dhInicioVTDiaria, TimeSpan dhTerminoVTDiaria)
         {
             this.IDTurmaConfig = idTurmaConfig;
             this.IDTurma = idTurma;

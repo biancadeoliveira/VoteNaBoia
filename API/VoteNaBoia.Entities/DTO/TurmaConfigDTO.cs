@@ -25,12 +25,12 @@ namespace VoteNaBoia.Entities.DTO
 
         public int NODiaVTSemanal { get; set; }
 
-        public DateTime DHInicioVTSemanal { get; set; }
+        public TimeSpan DHInicioVTSemanal { get; set; }
 
-        public DateTime DHTerminoVTSemanal { get; set; }
+        public TimeSpan DHTerminoVTSemanal { get; set; }
 
-        public DateTime DHInicioVTDiaria { get; set; }
+        public TimeSpan DHInicioVTDiaria { get; set; }
 
-        public DateTime DHTerminoVTDiaria { get; set; }
+        public TimeSpan DHTerminoVTDiaria { get; set; }
     }
 }

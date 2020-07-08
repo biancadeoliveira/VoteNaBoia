@@ -11,5 +11,6 @@ namespace VoteNaBoia.BLL.Infra
         Task<TurmaConfiguracao> GetTurmaConfiguracaoAsync(int IDTurma);
         Task<bool> CreateTurmaConfiguracaoAsync(TurmaConfiguracao turmaConfiguracao);
         Task<bool> UpdateTurmaConfiguracaoAsync(TurmaConfiguracao turmaConfiguracao);
+        Task<int> GetQtdVotacaoSemanal(int IDTurma);
     }
 }
