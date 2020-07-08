@@ -12,6 +12,6 @@ namespace VoteNaBoia.BLL.Infra
         Task<bool> CalcResultVotoSemanal(int IDPeriodo);
         Task<List<VotoSemanal>> GetAllVotosPeriodoAsync(int IDPeriodo);
         Task<VotoSemanal> GetVotoSemanal(int IDVotoSemanal);
-        Task<VotoSemanal> GetVotoSemanal(int IDPeriodo, int IDTurmaAluno);
+        Task<List<VotoSemanal>> GetVotoSemanal(int IDPeriodo, int IDTurmaAluno);
     }
 }

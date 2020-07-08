@@ -36,14 +36,14 @@ namespace VoteNaBoia.DAL
             return await _dbContext.VotoSemanal.Where(x => x.IDPeriodo.Equals(IDPeriodo)).ToListAsync();
         }
 
+        public async Task<List<VotoSemanal>> GetAllVotosPeriodoAlunoAsync(int IDPeriodo, int IDTurmaAluno)
+        {
+            return await _dbContext.VotoSemanal.Where(x => x.IDPeriodo.Equals(IDPeriodo) && x.IDTurmaAluno.Equals(IDTurmaAluno)).ToListAsync();
+        }
+
         public async Task<VotoSemanal> GetVotoSemanal(int IDVotoSemanal)
         {
             return await _dbContext.VotoSemanal.Where(x => x.IDVotoSemanal.Equals(IDVotoSemanal)).FirstOrDefaultAsync();
-        }
-
-        public async Task<VotoSemanal> GetVotoSemanal(int IDPeriodo, int IDTurmaAluno)
-        {
-            return await _dbContext.VotoSemanal.Where(x => x.IDPeriodo.Equals(IDPeriodo) && x.IDTurmaAluno.Equals(IDTurmaAluno)).FirstOrDefaultAsync();
         }
     }
 }
