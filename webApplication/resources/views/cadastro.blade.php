@@ -6,30 +6,31 @@
 <div class="container">
     <div class="center-block cadastro">
         <img class="logoinicial" src="assets\image\LOGO_VNB-min.png" alt="300">
-        <form class="telaregistro">
+        <form class="telaregistro" action="{{route('cadastraAluno')}}" method="POST">
+        @csrf
             <div class="row">
                 <div class="col">
                     <i class="fas fa-user-astronaut cadastro"></i>
                 </div>
                 <div class="col nome">
                     <label for="imputnomeRegistro">Nome</label>
-                    <input type="text" class="form-control telaregistro" placeholder="Digite seu nome completo">
+                    <input type="text" class="form-control telaregistro" placeholder="Digite seu nome completo" name="NMAluno">
                 </div>
             </div>
             <div class="form-group">
               <label for="imputEmailRegistro">Email</label>
-              <input type="email" class="form-control telaRegistro" placeholder="Digite seu e-mail" id="imputEmailRegistro">
+              <input type="email" class="form-control telaRegistro" placeholder="Digite seu e-mail" name="Email">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Senha</label>
-              <input type="password" class="form-control telaRegistro" id="ImputSenhaRegistro" placeholder="Digite sua senha">
+              <input type="password" class="form-control telaRegistro" name="Senha" placeholder="Digite sua senha">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Confirme sua Senha</label>
-                <input type="password" class="form-control telaRegistro" id="ImputSenhaConfirmaRegistro" placeholder="Repita sua senha">
+                <input type="password" class="form-control telaRegistro" placeholder="Repita sua senha">
               </div>
             <div class="form-group form-check telaRegistro">
-                <input type="checkbox" class="form-check-input" id="CheckPermaneceLogado">
+                <input type="checkbox" class="form-check-input" name="SNEnviaEmail">
                 <label class="form-check-label permanecelogado" for="CheckPermaneceLogado">Desejo receber notificações por e-mail</label>
             </div>
             <div class="row">

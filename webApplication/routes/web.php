@@ -25,6 +25,7 @@ Route::post('/login', 'ApiController@fazerLogin')->name('login');
 Route::get('/cadastro', function () { // ok
     return view('cadastro');
 });
+Route::post('/cadastro', 'ApiController@cadastraAluno')->name('cadastraAluno');
 
 Route::get('/configuracoes', function () { // ok
     return view('configuracoes');

@@ -88,6 +88,25 @@ class ApiController extends Controller
           //print_r($response);
     }
 
+    public function cadastraAluno(Request $request)
+    {
+        $dados = $request->except(['_token']);
+
+        if(isset($dados['SNEnviaEmail'])){
+            $dados['SNEnviaEmail'] = 'S';
+        }
+        else{
+            $dados['SNEnviaEmail'] = 'N';
+        }
+
+        $dados['SNAtivo'] = 'S';
+
+        $url = "https://localhost:44380/api/aluno/";
+        $ret = json_decode($this->requisicao($dados, $url));
+
+        return redirect()->route('login')->with('msg', $ret->message);
+    }
+
     public function fazerLogin(Request $request){
         $dados = $request->except(['_token']);
         $email = $dados['imputEmailLogin'];
