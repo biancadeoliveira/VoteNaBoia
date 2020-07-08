@@ -15,6 +15,7 @@
           Vote na Boia - Documentação API
         </a>
     </nav>
+    
     <section class="container mt-3 mb-4">
         <div class="col-md-10">
             
@@ -35,7 +36,7 @@
                       <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_alunos_1" aria-expanded="false" aria-controls="collapse_alunos_1">
                         <p class="text-left">
                             <span class="badge badge-success">POST</span><br/>
-                            <span>alunos/</span>
+                            <span>aluno/</span>
                         </p>
                       </button>
                     </h5>
@@ -72,7 +73,7 @@
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_alunos_2" aria-expanded="false" aria-controls="collapse_alunos_2">
                         <p class="text-left">
                             <span class="badge badge-primary">GET</span><br/>
-                            <span>alunos/</span>
+                            <span>aluno/</span>
                         </p>
                       </button>
                     </h5>
@@ -114,7 +115,7 @@
                           <p class="text-left">
                               <span class="badge badge-primary">GET</span>
                               <span class="badge badge-secondary">Especifico</span><br/>
-                              <span>alunos/{id}/</span>
+                              <span>aluno/{id}/</span>
                           </p>
                         </button>
                       </h5>
@@ -157,7 +158,7 @@
                       <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_alunos_4" aria-expanded="false" aria-controls="collapse_alunos_4">
                         <p class="text-left">
                             <span class="badge badge-warning">PUT</span><br/>
-                            <span>alunos/{id}/</span>
+                            <span>aluno/{id}/</span>
                         </p>
                       </button>
                     </h5>
@@ -200,7 +201,7 @@
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_alunos_5" aria-expanded="false" aria-controls="collapse_alunos_5">
                         <p class="text-left">
                             <span class="badge badge-warning">PUT</span><br/>
-                            <span>alunos/{id}/ativo/</span>
+                            <span>aluno/{id}/ativo/</span>
                         </p>
                         </button>
                     </h5>
@@ -703,6 +704,158 @@
                     </div>
                 </div>
             </div>
+        
+            <!-- Rotas Periodo Semanal -->
+            <div id="periodo_semanal" class="pt-3">
+                <h4>Endpoint Periodo Semanal</h4>
+                <hr/>
+
+                <!-- Alunos POST -->
+                <!-- Periodo Semanal Abrir-->
+                <div class="card">
+                    <div class="card-header" id="heading_periodo_semanal_1">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_periodo_semanal_1" aria-expanded="false" aria-controls="collapse_periodo_semanal_1">
+                          <p class="text-left">
+                              <span class="badge badge-success">POST</span><br/>
+                              <span>periodo/{IDTurma}/abrir</span>
+                          </p>
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapse_periodo_semanal_1" class="collapse" aria-labelledby="heading_periodo_semanal_1" data-parent="#periodo_semanal">
+                      <div class="card-body">
+                          <p>Abre um novo periodo para a turma e fecha o último caso esteja aberto.</p>
+                          <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {IDTurma} o id da turma.</p>
+                          <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                          <pre class="bg-dark text-light">         
+      "object": null,
+      "message": "",
+      "skip": 0,
+      "take": 0
+                          </pre>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- Periodo Semanal GET all-->
+                <div class="card">
+                  <div class="card-header" id="heading_periodo_semanal_2">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_periodo_semanal_2" aria-expanded="false" aria-controls="collapse_periodo_semanal_2">
+                        <p class="text-left">
+                            <span class="badge badge-primary">GET</span><br/>
+                            <span>periodo/{IDTurma}/all/</span>
+                        </p>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapse_periodo_semanal_2" class="collapse" aria-labelledby="heading_periodo_semanal_2" data-parent="#periodo_semanal">
+                    <div class="card-body">
+                        <p>Busca todos os periodos da turma informada</p>
+                        <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {IDTurma} o id da Turma que deseja buscar os periodos.</p>
+                        <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                        <pre class="bg-dark text-light">         
+      "object": [{}, {}, {} ... {}]
+      "message": "",
+      "skip": 0,
+      "take": 0
+                        </pre>
+                        <p>O <b>Object</b> será um conjunto de JSONs, exemplo:</p>
+                        <pre class="bg-dark text-light">        
+    [
+        {
+            "idPeriodo": 2,
+            "idTurma": 1,
+            "dhInicio": "2020-06-23T22:59:18.253",
+            "dhFim": "2020-06-23T23:10:33.64",
+            "snAtivo": "N",
+            "snProcessado": "N"
+        },
+        {
+            "idPeriodo": 3,
+            "idTurma": 1,
+            "dhInicio": "2020-06-23T23:10:56.9",
+            "dhFim": "2020-06-23T23:33:34.677",
+            "snAtivo": "N",
+            "snProcessado": "N"
+        }
+    ]
+    
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Periodo Semanal GET one-->
+                <div class="card">
+                    <div class="card-header" id="heading_periodo_semanal_3">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_periodo_semanal_3" aria-expanded="false" aria-controls="collapse_periodo_semanal_3">
+                          <p class="text-left">
+                              <span class="badge badge-primary">GET</span>
+                              <span class="badge badge-secondary">Especifico</span><br/>
+                              <span>periodo/{IDTurma}/</span>
+                          </p>
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapse_periodo_semanal_3" class="collapse" aria-labelledby="heading_periodo_semanal_3" data-parent="#periodo_semanal">
+                      <div class="card-body">
+                          <p>Retorna o <b>último</b> periodo da turma especificada pelo ID passado na rota</p>
+                          <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {IDTurma} o id da Turma que deseja buscar o último periodo.</p>
+                          <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                          <pre class="bg-dark text-light">         
+    "object": {}
+    "message": "",
+    "skip": 0,
+    "take": 0
+                          </pre>
+                          <p>O <b>Object</b> será um JSON, exemplo:</p>
+                          <pre class="bg-dark text-light">        
+    {
+        "idPeriodo": 4,
+        "idTurma": 1,
+        "dhInicio": "2020-06-23T23:33:34.907",
+        "dhFim": "3000-12-01T00:00:00",
+        "snAtivo": "S",
+        "snProcessado": "N"
+    }      
+                          </pre>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- Periodo Semanal Fechar-->
+                <div class="card">
+                  <div class="card-header" id="heading_periodo_semanal_4">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_periodo_semanal_4" aria-expanded="false" aria-controls="collapse_periodo_semanal_4">
+                        <p class="text-left">
+                            <span class="badge badge-warning">PUT</span><br/>
+                            <span>periodo/{IDTurma}/fechar</span>
+                        </p>
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapse_periodo_semanal_4" class="collapse" aria-labelledby="heading_periodo_semanal_4" data-parent="#periodo_semanal">
+                    <div class="card-body">
+                        <p>Fecha o último período da turma caso esteja aberto.</p>
+                        <p>No <b>REQUEST</b> não é necessário enviar nenhuma informação, só acessar o endpoint e passar no {IDTurma} o id da turma.</p>
+                        <p>O <b>RESPONSE</b> será composto sempre por:</p>
+                        <pre class="bg-dark text-light">         
+    "object": null,
+    "message": "",
+    "skip": 0,
+    "take": 0
+                        </pre>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+        
+         
         </div>
     </section>
     <footer class="container-fluid bg-dark text-light p-3">
